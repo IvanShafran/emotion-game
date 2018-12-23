@@ -89,35 +89,6 @@ public class GraphicOverlay extends View {
         public float scaleY(float vertical) {
             return vertical * overlay.heightScaleFactor;
         }
-
-        /**
-         * Returns the application context of the app.
-         */
-        public Context getApplicationContext() {
-            return overlay.getContext().getApplicationContext();
-        }
-
-        /**
-         * Adjusts the x coordinate from the preview's coordinate system to the view coordinate system.
-         */
-        public float translateX(float x) {
-            if (overlay.facing == CameraSource.CAMERA_FACING_FRONT) {
-                return overlay.getWidth() - scaleX(x);
-            } else {
-                return scaleX(x);
-            }
-        }
-
-        /**
-         * Adjusts the y coordinate from the preview's coordinate system to the view coordinate system.
-         */
-        public float translateY(float y) {
-            return scaleY(y);
-        }
-
-        public void postInvalidate() {
-            overlay.postInvalidate();
-        }
     }
 
     public GraphicOverlay(Context context, AttributeSet attrs) {
@@ -141,16 +112,6 @@ public class GraphicOverlay extends View {
         synchronized (lock) {
             graphics.add(graphic);
         }
-    }
-
-    /**
-     * Removes a graphic from the overlay.
-     */
-    public void remove(Graphic graphic) {
-        synchronized (lock) {
-            graphics.remove(graphic);
-        }
-        postInvalidate();
     }
 
     /**

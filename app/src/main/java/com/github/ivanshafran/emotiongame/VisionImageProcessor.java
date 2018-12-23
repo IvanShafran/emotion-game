@@ -13,7 +13,6 @@
 // limitations under the License.
 package com.github.ivanshafran.emotiongame;
 
-import android.graphics.Bitmap;
 import com.google.firebase.ml.common.FirebaseMLException;
 
 import java.nio.ByteBuffer;
@@ -28,11 +27,6 @@ public interface VisionImageProcessor {
      */
     void process(ByteBuffer data, FrameMetadata frameMetadata, GraphicOverlay graphicOverlay)
             throws FirebaseMLException;
-
-    /**
-     * Processes the bitmap images.
-     */
-    void process(Bitmap bitmap, GraphicOverlay graphicOverlay);
 
     /**
      * Stops the underlying machine learning model and release resources.

@@ -74,13 +74,6 @@ public class CameraSourcePreview extends ViewGroup {
         }
     }
 
-    public void release() {
-        if (cameraSource != null) {
-            cameraSource.release();
-            cameraSource = null;
-        }
-    }
-
     @SuppressLint("MissingPermission")
     private void startIfReady() throws IOException {
         if (startRequested && surfaceAvailable) {
