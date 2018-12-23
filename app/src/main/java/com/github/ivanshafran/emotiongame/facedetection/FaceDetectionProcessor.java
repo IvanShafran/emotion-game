@@ -79,14 +79,7 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
                     || face.getRightEyeOpenProbability() < 0.1;
 
             GameSurfaceView.setMimicks(isSmiling, isBlink);
-
-//            int cameraFacing =
-//                    frameMetadata != null ? frameMetadata.getCameraFacing() :
-//                            Camera.CameraInfo.CAMERA_FACING_BACK;
-//            FaceGraphic faceGraphic = new FaceGraphic(graphicOverlay, face, cameraFacing);
-//            graphicOverlay.add(faceGraphic);
         }
-//        graphicOverlay.postInvalidate();
     }
 
     @Override
