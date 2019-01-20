@@ -1,4 +1,4 @@
-package com.github.ivanshafran.emotiongame;
+package com.github.ivanshafran.emotiongame.camera;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

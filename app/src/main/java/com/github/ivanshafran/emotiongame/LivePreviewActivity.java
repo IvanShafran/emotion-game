@@ -22,7 +22,10 @@ import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import com.github.ivanshafran.emotiongame.facedetection.FaceDetectionProcessor;
+import com.github.ivanshafran.emotiongame.camera.CameraSource;
+import com.github.ivanshafran.emotiongame.camera.CameraSourcePreview;
+import com.github.ivanshafran.emotiongame.camera.GraphicOverlay;
+import com.github.ivanshafran.emotiongame.camera.facedetection.FaceDetectionProcessor;
 import com.google.android.gms.common.annotation.KeepName;
 
 import java.io.IOException;

@@ -11,13 +11,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.github.ivanshafran.emotiongame.facedetection;
+package com.github.ivanshafran.emotiongame.camera.facedetection;
 
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import com.github.ivanshafran.emotiongame.*;
+import com.github.ivanshafran.emotiongame.GameSurfaceView;
+import com.github.ivanshafran.emotiongame.camera.*;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;

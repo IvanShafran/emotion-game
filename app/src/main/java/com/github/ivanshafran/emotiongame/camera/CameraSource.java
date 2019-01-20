@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.github.ivanshafran.emotiongame;
+package com.github.ivanshafran.emotiongame.camera;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
