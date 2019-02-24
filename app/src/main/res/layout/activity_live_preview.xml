@@ -25,7 +25,7 @@
                 android:layout_alignParentBottom="true"/>
     </com.github.ivanshafran.emotiongame.camera.CameraSourcePreview>
 
-    <com.github.ivanshafran.emotiongame.GameSurfaceView
+    <com.github.ivanshafran.emotiongame.game.GameSurfaceView
             android:id="@+id/surfaceView"
             android:layout_weight="1"
             android:layout_width="match_parent"

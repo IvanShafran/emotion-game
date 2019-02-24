@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="game_sky_day">#B0EAFE</color>
+    <color name="game_sky_night">#00006F</color>
+    <color name="game_road_grass">#8FDC00</color>
+    <color name="game_road_border">#FFFFFF</color>
+    <color name="game_road">#BABABA</color>
+    <color name="game_road_line">#FFFFFF</color>
+    <color name="score_text_color">#FFFFFF</color>
+    <color name="life_text_color">#FF0000</color>
 </resources>

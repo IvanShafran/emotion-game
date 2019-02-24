@@ -17,8 +17,8 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import com.github.ivanshafran.emotiongame.GameSurfaceView;
 import com.github.ivanshafran.emotiongame.camera.*;
+import com.github.ivanshafran.emotiongame.game.GameSurfaceView;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
@@ -72,15 +72,17 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
             CameraImageGraphic imageGraphic = new CameraImageGraphic(graphicOverlay, originalCameraImage);
             graphicOverlay.add(imageGraphic);
         }
-        for (int i = 0; i < faces.size(); ++i) {
-            FirebaseVisionFace face = faces.get(i);
 
-            boolean isSmiling = face.getSmilingProbability() > 0.7;
-            boolean isBlink = face.getLeftEyeOpenProbability() < 0.1
-                    || face.getRightEyeOpenProbability() < 0.1;
-
-            GameSurfaceView.setMimicks(isSmiling, isBlink);
+        if (faces.isEmpty()) {
+            return;
         }
+
+        FirebaseVisionFace face = faces.get(0);
+        GameSurfaceView.setFaceFeatures(new FaceFeatures(
+                face.getSmilingProbability(),
+                face.getLeftEyeOpenProbability(),
+                face.getRightEyeOpenProbability()
+        ));
     }
 
     @Override

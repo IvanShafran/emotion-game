@@ -113,7 +113,7 @@ data class GameConfig(
     val scoreConfig: ScoreConfig,
     val lifeConfig: LifeConfig,
     val bonusConfig: BonusConfig,
-    val speedMultiplier: SpeedMultiplier
+    val speedMultiplier: SpeedMultiplierConfig
 ) {
 
     init {
