@@ -56,7 +56,7 @@ class Drawer(private val context: Context) {
         val paint = getTextPaint(drawable.textColor, drawable.textSize)
 
         val centerX = gameObject.rect.x
-        val centerY = gameObject.rect.y + gameObject.rect.height / 2
+        val centerY = gameObject.rect.y + gameObject.rect.height
 
         canvas.drawText(drawable.text, centerX, centerY, paint)
     }
