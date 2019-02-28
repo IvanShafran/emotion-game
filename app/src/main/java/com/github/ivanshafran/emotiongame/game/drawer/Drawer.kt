@@ -30,6 +30,7 @@ class Drawer(private val context: Context) {
         drawGameObject(canvas, gameState.road.downBorder)
         drawGameObject(canvas, gameState.road.upGrass)
         drawGameObject(canvas, gameState.road.downGrass)
+        gameState.road.lineDividers.forEach { drawGameObject(canvas, it) }
 
         drawGameObject(canvas, gameState.player.gameObject)
 

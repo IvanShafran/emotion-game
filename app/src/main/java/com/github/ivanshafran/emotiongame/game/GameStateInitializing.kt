@@ -94,8 +94,41 @@ private fun getInitializedRoad(config: GameConfig): Road {
                 height = borderHeight
             )
         ),
-        lineDividers = listOf()
+        lineDividers = getInitializedLineDividers(config)
     )
+}
+
+private fun getInitializedLineDividers(config: GameConfig): List<GameObject> {
+    val lineDividers = mutableListOf<GameObject>()
+    val lineHeight = (config.canvasConfig.height * config.roadConfig.lineHeightFraction).toInt()
+    val lineWidth = (lineHeight * config.roadConfig.lineWidthToHeightAspectRatio).toInt()
+    val lineSkip = (config.canvasConfig.width * config.roadConfig.lineSkipFraction)
+    val drawable = ColorDrawable(colorRes = config.roadConfig.lineColor)
+    val y = config.canvasConfig.height *
+            (config.skyConfig.heightFraction + (1 - config.skyConfig.heightFraction) / 2) - lineHeight / 2
+
+    lineDividers.add(
+        GameObject(
+            drawable = drawable,
+            rect = Rect(x = 0f, y = y, width = lineWidth, height = lineHeight)
+        )
+    )
+
+    while (lineDividers.last().rect.x < config.canvasConfig.width) {
+        lineDividers.add(
+            GameObject(
+                drawable = drawable,
+                rect = Rect(
+                    x = lineDividers.last().rect.x + lineSkip + lineWidth,
+                    y = y,
+                    width = lineWidth,
+                    height = lineHeight
+                )
+            )
+        )
+    }
+
+    return lineDividers
 }
 
 private fun getInitializedPlayer(config: GameConfig): Player {

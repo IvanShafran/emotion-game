@@ -42,10 +42,10 @@ val defaultRoadConfig = RoadConfig(
     borderColor = R.color.game_road_border,
     heightFraction = FULL_ROAD_FRACTION * 0.7f,
     color = R.color.game_road,
-    lineHeightFraction = FULL_ROAD_FRACTION * 0.15f,
+    lineHeightFraction = FULL_ROAD_FRACTION * 0.05f,
     lineColor = R.color.game_road_line,
-    lineWidthToHeightAspectRatio = 8f,
-    lineSkipFraction = 0.5f
+    lineWidthToHeightAspectRatio = 5f,
+    lineSkipFraction = 0.1f
 )
 
 val defaultPlayerConfig = PlayerConfig(
