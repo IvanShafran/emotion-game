@@ -103,11 +103,12 @@ val defaultBonusConfig = BonusConfig(
 
 val defaultSpeedMultiplierConfig = SpeedMultiplierConfig(
     multipliers = listOf(
-        SpeedMultiplier(1f, 0L),
-        SpeedMultiplier(1.5f, 10000L),
-        SpeedMultiplier(2f, 20000L),
-        SpeedMultiplier(2.5f, 30000L),
-        SpeedMultiplier(3f, 40000L),
-        SpeedMultiplier(5f, 50000L)
+        SpeedMultiplier(1.0f, 10000L),
+        SpeedMultiplier(1.5f, 30000L),
+        SpeedMultiplier(2.0f, 45000L),
+        SpeedMultiplier(2.5f, 60000L),
+        SpeedMultiplier(3.0f, 90000L),
+        SpeedMultiplier(4.0f, 120000L),
+        SpeedMultiplier(5.0f, 180000L)
     )
 )

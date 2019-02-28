@@ -63,7 +63,7 @@ class StepProcessor(
     private fun getSpeedMultiplier(): Float {
         val multipliers = config.speedMultiplier.multipliers
         if (multipliers.size != speedMultiplierIndex + 1) {
-            if (multipliers[speedMultiplierIndex].timeFromStartInMillis > startTimeInMillis) {
+            if (multipliers[speedMultiplierIndex].timeFromStartInMillis < (timeInMillis - startTimeInMillis)) {
                 speedMultiplierIndex += 1
             }
         }
