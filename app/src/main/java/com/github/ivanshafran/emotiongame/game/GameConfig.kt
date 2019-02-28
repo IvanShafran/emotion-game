@@ -52,7 +52,7 @@ data class RoadConfig(
 )
 
 data class PlayerConfig(
-    @DimenRes val speedDimenRes: Int,
+    @DimenRes val speedDimenRes: Int, // per second
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
     val animationDrawableResList: List<Int>,
