@@ -3,19 +3,21 @@ package com.github.ivanshafran.emotiongame.game
 import com.github.ivanshafran.emotiongame.game.game_object.*
 import com.github.ivanshafran.emotiongame.resource.ResourceProvider
 
+private const val MILLIS_IN_SECOND = 1000f
+
 fun getInitializedGameState(config: GameConfig, resourceProvider: ResourceProvider): GameState {
     return GameState(
         score = getInitializedScore(config, resourceProvider),
         life = getInitializedLife(config, resourceProvider),
         bonus = getInitializedBonus(config),
         enemy = getInitializedEnemy(config),
-        player = getInitializedPlayer(config),
+        player = getInitializedPlayer(config, resourceProvider),
         road = getInitializedRoad(config),
-        sky = getInitializedSky(config)
+        sky = getInitializedSky(config, resourceProvider)
     )
 }
 
-private fun getInitializedSky(config: GameConfig): Sky {
+private fun getInitializedSky(config: GameConfig, resourceProvider: ResourceProvider): Sky {
     val height = config.canvasConfig.height * config.skyConfig.heightFraction
     return Sky(
         background = GameObject(
@@ -27,9 +29,31 @@ private fun getInitializedSky(config: GameConfig): Sky {
                 height = height.toInt()
             )
         ),
-        clouds = listOf(),
+        clouds = getInitializedClouds(config, resourceProvider),
         stars = listOf()
     )
+}
+
+private fun getInitializedClouds(config: GameConfig, resourceProvider: ResourceProvider): List<Cloud> {
+    return config.skyConfig.cloudConfigs.map { cloudConfig ->
+        val height = (config.canvasConfig.height * cloudConfig.heightFraction).toInt()
+        val width = (height * cloudConfig.widthToHeightAspectRatio).toInt()
+        val x = config.canvasConfig.width * cloudConfig.xWidthFraction
+        val y = config.canvasConfig.height * cloudConfig.yHeightFraction
+
+        Cloud(
+            gameObject = GameObject(
+                drawable = BitmapDrawable(cloudConfig.drawableRes),
+                rect = Rect(
+                    x = x,
+                    y = y,
+                    width = width,
+                    height = height
+                )
+            ),
+            speedPerMillis = resourceProvider.getDimen(cloudConfig.speedDimenRes) / MILLIS_IN_SECOND
+        )
+    }
 }
 
 private fun getInitializedRoad(config: GameConfig): Road {
@@ -131,7 +155,7 @@ private fun getInitializedLineDividers(config: GameConfig): List<GameObject> {
     return lineDividers
 }
 
-private fun getInitializedPlayer(config: GameConfig): Player {
+private fun getInitializedPlayer(config: GameConfig, resourceProvider: ResourceProvider): Player {
     val height = (config.canvasConfig.height * config.playerConfig.heightFraction).toInt()
     val width = (height * config.playerConfig.widthToHeightAspectRatio).toInt()
     return Player(
@@ -146,7 +170,8 @@ private fun getInitializedPlayer(config: GameConfig): Player {
                 height = height,
                 width = width
             )
-        )
+        ),
+        speedPerMillis = resourceProvider.getDimen(config.playerConfig.speedDimenRes) / MILLIS_IN_SECOND
     )
 }
 

@@ -13,7 +13,8 @@ data class Life(
 )
 
 data class Player(
-    var gameObject: GameObject
+    var gameObject: GameObject,
+    val speedPerMillis: Float
 )
 
 data class Enemy(
@@ -26,8 +27,13 @@ data class Bonus(
 
 data class Sky(
     var background: GameObject,
-    var clouds: List<GameObject>,
+    var clouds: List<Cloud>,
     var stars: List<GameObject>
+)
+
+data class Cloud(
+    val gameObject: GameObject,
+    val speedPerMillis: Float
 )
 
 data class Road(

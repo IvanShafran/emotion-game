@@ -9,20 +9,31 @@ val defaultSkyConfig = SkyConfig(
     heightFraction = SKY_FRACTION,
     dayColor = R.color.game_sky_day,
     nightColor = R.color.game_sky_night,
-    cloudDrawableResList = listOf(
-        R.drawable.cloud_1,
-        R.drawable.cloud_2,
-        R.drawable.cloud_3
-    ),
-    cloudHeightFractions = listOf(
-        SKY_FRACTION * 0.2f,
-        SKY_FRACTION * 0.15f,
-        SKY_FRACTION * 0.3f
-    ),
-    cloudWidthToHeightAspectRatios = listOf(
-        2f,
-        2f,
-        2f
+    cloudConfigs = listOf(
+        CloudConfig(
+            drawableRes = R.drawable.cloud_1,
+            heightFraction = SKY_FRACTION * 0.2f,
+            widthToHeightAspectRatio = 2f,
+            speedDimenRes = R.dimen.cloud_1_speed,
+            xWidthFraction = 0.2f,
+            yHeightFraction = SKY_FRACTION * 0.5f
+        ),
+        CloudConfig(
+            drawableRes = R.drawable.cloud_2,
+            heightFraction = SKY_FRACTION * 0.15f,
+            widthToHeightAspectRatio = 2f,
+            speedDimenRes = R.dimen.cloud_2_speed,
+            xWidthFraction = 0.4f,
+            yHeightFraction = SKY_FRACTION * 0.1f
+        ),
+        CloudConfig(
+            drawableRes = R.drawable.cloud_3,
+            heightFraction = SKY_FRACTION * 0.3f,
+            widthToHeightAspectRatio = 2f,
+            speedDimenRes = R.dimen.cloud_3_speed,
+            xWidthFraction = 0.7f,
+            yHeightFraction = SKY_FRACTION * 0.3f
+        )
     )
 )
 

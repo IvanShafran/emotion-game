@@ -14,20 +14,17 @@ data class SkyConfig(
     val heightFraction: Float,
     @ColorRes val dayColor: Int,
     @ColorRes val nightColor: Int,
-    val cloudDrawableResList: List<Int>,
-    val cloudHeightFractions: List<Float>,
-    val cloudWidthToHeightAspectRatios: List<Float>
-) {
-    init {
-        if (cloudDrawableResList.size != cloudHeightFractions.size) {
-            throw IllegalStateException("cloudDrawableResList.size != cloudHeightFractions.size")
-        }
+    val cloudConfigs: List<CloudConfig>
+)
 
-        if (cloudDrawableResList.size != cloudWidthToHeightAspectRatios.size) {
-            throw IllegalStateException("cloudDrawableResList.size != cloudWidthToHeightAspectRatios.size")
-        }
-    }
-}
+data class CloudConfig(
+    val drawableRes: Int,
+    val heightFraction: Float,
+    val widthToHeightAspectRatio: Float,
+    val speedDimenRes: Int,
+    val xWidthFraction: Float,
+    val yHeightFraction: Float
+)
 
 data class SunConfig(
     @DrawableRes val smileNotBlinkRes: Int,

@@ -23,7 +23,7 @@ class Drawer(private val context: Context) {
     fun draw(canvas: Canvas, gameState: GameState) {
         drawGameObject(canvas, gameState.sky.background)
         gameState.sky.stars.forEach { drawGameObject(canvas, it) }
-        gameState.sky.clouds.forEach { drawGameObject(canvas, it) }
+        gameState.sky.clouds.forEach { drawGameObject(canvas, it.gameObject) }
 
         drawGameObject(canvas, gameState.road.road)
         drawGameObject(canvas, gameState.road.upBorder)
