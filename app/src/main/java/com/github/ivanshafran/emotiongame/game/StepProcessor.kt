@@ -2,6 +2,7 @@ package com.github.ivanshafran.emotiongame.game
 
 import com.github.ivanshafran.emotiongame.camera.FaceFeatures
 import com.github.ivanshafran.emotiongame.game.game_object.BitmapDrawable
+import com.github.ivanshafran.emotiongame.game.game_object.ColorDrawable
 import com.github.ivanshafran.emotiongame.game.game_object.Rect
 import com.github.ivanshafran.emotiongame.resource.ResourceProvider
 
@@ -51,7 +52,7 @@ class StepProcessor(
     private fun doNextStep() {
         updateSun()
         doRoadLinesStep()
-        doSkyCloudsStep()
+        updateSky()
     }
 
     private fun updateSun() {
@@ -78,6 +79,18 @@ class StepProcessor(
                 rect.x = lineDividers[lastIndex].rect.x + rect.width + lineSkip
             }
         }
+    }
+
+    private fun updateSky() {
+        gameState.sky.isDay = !isBlinking
+        val color = if (gameState.sky.isDay) {
+            config.skyConfig.dayColor
+        } else {
+            config.skyConfig.nightColor
+        }
+        gameState.sky.background.drawable = ColorDrawable(color)
+
+        doSkyCloudsStep()
     }
 
     private fun doSkyCloudsStep() {

@@ -28,7 +28,8 @@ data class Bonus(
 data class Sky(
     var background: GameObject,
     var clouds: List<Cloud>,
-    var stars: List<GameObject>
+    var stars: List<GameObject>,
+    var isDay: Boolean = true
 )
 
 data class Cloud(
