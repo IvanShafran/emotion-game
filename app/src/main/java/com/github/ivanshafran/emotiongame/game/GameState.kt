@@ -19,8 +19,7 @@ data class Player(
 
 data class Enemy(
     var gameObject: GameObject,
-    val speedPerMillis: Float,
-    val enemyWidthIntersectOffsetFraction: Float
+    val speedPerMillis: Float
 )
 
 data class Bonus(

@@ -209,8 +209,7 @@ private fun getInitializedEnemy(config: GameConfig, resourceProvider: ResourcePr
                 height = height
             )
         ),
-        speedPerMillis = resourceProvider.getDimen(config.enemyConfig.speedDimenRes) / MILLIS_IN_SECOND,
-        enemyWidthIntersectOffsetFraction = config.enemyConfig.enemyWidthIntersectOffsetFraction
+        speedPerMillis = resourceProvider.getDimen(config.enemyConfig.speedDimenRes) / MILLIS_IN_SECOND
     )
 }
 

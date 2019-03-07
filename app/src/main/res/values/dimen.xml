@@ -2,7 +2,7 @@
 <resources>
     <dimen name="player_speed">100dp</dimen>
     <dimen name="enemy_speed">120dp</dimen>
-    <dimen name="bonus_speed">80dp</dimen>
+    <dimen name="bonus_speed">100dp</dimen>
     <dimen name="score_text_size">30sp</dimen>
     <dimen name="life_text_size">30sp</dimen>
     <dimen name="cloud_1_speed">20dp</dimen>

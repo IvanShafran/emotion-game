@@ -58,6 +58,7 @@ class StepProcessor(
         doRoadLinesStep()
         updateSky()
         doEnemyStep()
+        doBonusStep()
         updateScore()
         updateLife()
     }
@@ -117,7 +118,7 @@ class StepProcessor(
         rect.x -= step
 
         var shouldRestart = isRectToLeftOfScreen(rect)
-        val intersectOffset = gameState.enemy.gameObject.rect.width * gameState.enemy.enemyWidthIntersectOffsetFraction
+        val intersectOffset = gameState.enemy.gameObject.rect.width * config.enemyConfig.widthIntersectOffsetFraction
         val intersectRect = Rect(
             x = rect.x + intersectOffset,
             y = rect.y,
@@ -132,6 +133,41 @@ class StepProcessor(
 
         if (shouldRestart) {
             rect.x = config.canvasConfig.width * (1f + config.enemyConfig.widthFractionStartOffset)
+
+            if (random.nextBoolean()) {
+                rect.y = getYPositionForFirstLine(config, rect.height)
+            } else {
+                rect.y = getYPositionForSecondLine(config, rect.height)
+            }
+        }
+    }
+
+    private fun doBonusStep() {
+        val step = calculateStep(gameState.bonus.speedPerMillis)
+
+        val rect = gameState.bonus.gameObject.rect
+        rect.x -= step
+
+        var shouldRestart = isRectToLeftOfScreen(rect)
+        val intersectOffset = gameState.bonus.gameObject.rect.width * config.bonusConfig.widthIntersectOffsetFraction
+        val intersectRect = Rect(
+            x = rect.x + intersectOffset,
+            y = rect.y,
+            width = rect.width,
+            height = rect.height
+        )
+
+        if (isRectIntersects(intersectRect, gameState.player.gameObject.rect)) {
+            gameState.score.value += if (gameState.sky.isDay) {
+                config.scoreConfig.dayBonusScore
+            } else {
+                config.scoreConfig.nightBonusScore
+            }
+            shouldRestart = true
+        }
+
+        if (shouldRestart) {
+            rect.x = config.canvasConfig.width * (1f + config.bonusConfig.widthFractionStartOffset)
 
             if (random.nextBoolean()) {
                 rect.y = getYPositionForFirstLine(config, rect.height)

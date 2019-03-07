@@ -82,7 +82,7 @@ val defaultEnemyConfig = EnemyConfig(
     ),
     animationFrameSkipCount = 20,
     widthFractionStartOffset = 2f,
-    enemyWidthIntersectOffsetFraction = 0.2f
+    widthIntersectOffsetFraction = 0.2f
 )
 
 val defaultScoreConfig = ScoreConfig(
@@ -111,7 +111,9 @@ val defaultBonusConfig = BonusConfig(
     drawableResList = listOf(
         R.drawable.cake,
         R.drawable.bottle
-    )
+    ),
+    widthFractionStartOffset = 1f,
+    widthIntersectOffsetFraction = 0.2f
 )
 
 val defaultSpeedMultiplierConfig = SpeedMultiplierConfig(

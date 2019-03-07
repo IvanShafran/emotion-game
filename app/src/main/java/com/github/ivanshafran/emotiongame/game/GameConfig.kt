@@ -64,7 +64,7 @@ data class EnemyConfig(
     val animationDrawableResList: List<Int>,
     val animationFrameSkipCount: Int,
     val widthFractionStartOffset: Float,
-    val enemyWidthIntersectOffsetFraction: Float
+    val widthIntersectOffsetFraction: Float
 )
 
 data class ScoreConfig(
@@ -90,7 +90,9 @@ data class BonusConfig(
     @DimenRes val speedDimenRes: Int,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
-    val drawableResList: List<Int>
+    val drawableResList: List<Int>,
+    val widthFractionStartOffset: Float,
+    val widthIntersectOffsetFraction: Float
 )
 
 data class SpeedMultiplier(
