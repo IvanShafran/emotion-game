@@ -9,8 +9,8 @@ fun getInitializedGameState(config: GameConfig, resourceProvider: ResourceProvid
     return GameState(
         score = getInitializedScore(config, resourceProvider),
         life = getInitializedLife(config, resourceProvider),
-        bonus = getInitializedBonus(config),
-        enemy = getInitializedEnemy(config),
+        bonus = getInitializedBonus(config, resourceProvider),
+        enemy = getInitializedEnemy(config, resourceProvider),
         player = getInitializedPlayer(config, resourceProvider),
         road = getInitializedRoad(config),
         sky = getInitializedSky(config, resourceProvider),
@@ -193,7 +193,7 @@ private fun getInitializedPlayer(config: GameConfig, resourceProvider: ResourceP
     )
 }
 
-private fun getInitializedEnemy(config: GameConfig): Enemy {
+private fun getInitializedEnemy(config: GameConfig, resourceProvider: ResourceProvider): Enemy {
     val height = (config.canvasConfig.height * config.enemyConfig.heightFraction).toInt()
     val width = (height * config.enemyConfig.widthToHeightAspectRatio).toInt()
     return Enemy(
@@ -203,16 +203,18 @@ private fun getInitializedEnemy(config: GameConfig): Enemy {
                 frameSkipBeforeNewBitmap = config.enemyConfig.animationFrameSkipCount
             ),
             rect = Rect(
-                x = config.canvasConfig.width.toFloat(),
+                x = config.canvasConfig.width * (1f + config.enemyConfig.widthFractionStartOffset),
                 y = getYPositionForSecondLine(config, height),
                 width = width,
                 height = height
             )
-        )
+        ),
+        speedPerMillis = resourceProvider.getDimen(config.enemyConfig.speedDimenRes) / MILLIS_IN_SECOND,
+        enemyWidthIntersectOffsetFraction = config.enemyConfig.enemyWidthIntersectOffsetFraction
     )
 }
 
-private fun getInitializedBonus(config: GameConfig): Bonus {
+private fun getInitializedBonus(config: GameConfig, resourceProvider: ResourceProvider): Bonus {
     val height = (config.canvasConfig.height * config.bonusConfig.heightFraction).toInt()
     val width = (height * config.bonusConfig.widthToHeightAspectRatio).toInt()
     return Bonus(
@@ -226,7 +228,8 @@ private fun getInitializedBonus(config: GameConfig): Bonus {
                 height = height,
                 width = width
             )
-        )
+        ),
+        speedPerMillis = resourceProvider.getDimen(config.bonusConfig.speedDimenRes) / MILLIS_IN_SECOND
     )
 }
 

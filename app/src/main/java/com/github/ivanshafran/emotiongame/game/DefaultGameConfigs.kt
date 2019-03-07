@@ -80,7 +80,9 @@ val defaultEnemyConfig = EnemyConfig(
         R.drawable.dog_2
 
     ),
-    animationFrameSkipCount = 20
+    animationFrameSkipCount = 20,
+    widthFractionStartOffset = 2f,
+    enemyWidthIntersectOffsetFraction = 0.2f
 )
 
 val defaultScoreConfig = ScoreConfig(

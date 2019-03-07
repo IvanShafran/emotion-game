@@ -18,11 +18,14 @@ data class Player(
 )
 
 data class Enemy(
-    var gameObject: GameObject
+    var gameObject: GameObject,
+    val speedPerMillis: Float,
+    val enemyWidthIntersectOffsetFraction: Float
 )
 
 data class Bonus(
-    var gameObject: GameObject
+    var gameObject: GameObject,
+    val speedPerMillis: Float
 )
 
 data class Sky(

@@ -62,7 +62,9 @@ data class EnemyConfig(
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
     val animationDrawableResList: List<Int>,
-    val animationFrameSkipCount: Int
+    val animationFrameSkipCount: Int,
+    val widthFractionStartOffset: Float,
+    val enemyWidthIntersectOffsetFraction: Float
 )
 
 data class ScoreConfig(
