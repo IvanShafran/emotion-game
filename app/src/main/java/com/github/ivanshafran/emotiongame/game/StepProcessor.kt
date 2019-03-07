@@ -1,6 +1,7 @@
 package com.github.ivanshafran.emotiongame.game
 
 import com.github.ivanshafran.emotiongame.camera.FaceFeatures
+import com.github.ivanshafran.emotiongame.game.game_object.BitmapDrawable
 import com.github.ivanshafran.emotiongame.game.game_object.Rect
 import com.github.ivanshafran.emotiongame.resource.ResourceProvider
 
@@ -12,6 +13,8 @@ class StepProcessor(
 
     companion object {
         private const val NO_TIME = -1L
+        private const val SMILE_THRESHOLD = 0.7f
+        private const val EYE_BLINK_THRESHOLD = 0.1f
     }
 
     private var startTimeInMillis: Long = NO_TIME
@@ -19,12 +22,13 @@ class StepProcessor(
     private var deltaTimeInMillis: Long = NO_TIME
 
     private val gameState: GameState = getInitializedGameState(config, resourceProvider)
-    private lateinit var faceFeatures: FaceFeatures
+    private var isSmiling: Boolean = false
+    private var isBlinking: Boolean = false
 
     private var speedMultiplierIndex = 0
 
     fun doNextStep(timeInMillis: Long, faceFeatures: FaceFeatures): GameState {
-        this.faceFeatures = faceFeatures
+        updateFaceFeatures(faceFeatures)
 
         if (this.timeInMillis == NO_TIME) {
             this.startTimeInMillis = timeInMillis
@@ -38,9 +42,27 @@ class StepProcessor(
         return gameState
     }
 
+    private fun updateFaceFeatures(faceFeatures: FaceFeatures) {
+        isSmiling = faceFeatures.smileProbability > SMILE_THRESHOLD
+        isBlinking = faceFeatures.leftEyeOpenProbability < EYE_BLINK_THRESHOLD ||
+                faceFeatures.rightEyeOpenProbability < EYE_BLINK_THRESHOLD
+    }
+
     private fun doNextStep() {
+        updateSun()
         doRoadLinesStep()
         doSkyCloudsStep()
+    }
+
+    private fun updateSun() {
+        val drawableRes = when {
+            isSmiling && isBlinking -> config.sunConfig.smileBlinkRes
+            isSmiling && !isBlinking -> config.sunConfig.smileNotBlinkRes
+            !isSmiling && isBlinking -> config.sunConfig.notSmileBlinkRes
+            else -> config.sunConfig.notSmileNotBlinkRes
+        }
+
+        gameState.sun.gameObject.drawable = BitmapDrawable(drawableRes)
     }
 
     private fun doRoadLinesStep() {

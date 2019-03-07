@@ -11,7 +11,7 @@ import com.github.ivanshafran.emotiongame.resource.ResourceProvider;
 
 public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callback, Runnable {
 
-    private static volatile FaceFeatures faceFeatures = new FaceFeatures(0, 0, 0);
+    private static volatile FaceFeatures faceFeatures = new FaceFeatures(0, 1, 1);
 
     public static void setFaceFeatures(FaceFeatures faceFeatures) {
         GameSurfaceView.faceFeatures = faceFeatures;

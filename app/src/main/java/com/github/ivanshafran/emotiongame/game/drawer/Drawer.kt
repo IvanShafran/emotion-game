@@ -41,6 +41,8 @@ class Drawer(private val context: Context) {
         drawGameObject(canvas, gameState.life.gameObject)
 
         drawGameObject(canvas, gameState.score.gameObject)
+
+        drawGameObject(canvas, gameState.sun.gameObject)
     }
 
     private fun drawGameObject(canvas: Canvas, gameObject: GameObject) {

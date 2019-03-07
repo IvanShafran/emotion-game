@@ -42,7 +42,7 @@ val defaultSunConfig = SunConfig(
     smileBlinkRes = R.drawable.sun_smile_blink,
     notSmileNotBlinkRes = R.drawable.sun_not_smile_not_blink,
     notSmileBlinkRes = R.drawable.sun_not_smile_blink,
-    heightFraction = SKY_FRACTION * 0.4f,
+    heightFraction = SKY_FRACTION * 0.8f,
     widthToHeightAspectRatio = 1f
 )
 

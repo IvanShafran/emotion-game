@@ -45,12 +45,17 @@ data class Road(
     var lineDividers: List<GameObject>
 )
 
+data class Sun(
+    val gameObject: GameObject
+)
+
 data class GameState(
-    var score: Score,
-    var life: Life,
-    var player: Player,
-    var enemy: Enemy,
-    var bonus: Bonus,
-    var sky: Sky,
-    var road: Road
+    val score: Score,
+    val life: Life,
+    val player: Player,
+    val enemy: Enemy,
+    val bonus: Bonus,
+    val sky: Sky,
+    val road: Road,
+    val sun: Sun
 )
