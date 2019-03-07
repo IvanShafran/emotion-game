@@ -4,6 +4,7 @@ import com.github.ivanshafran.emotiongame.camera.FaceFeatures
 import com.github.ivanshafran.emotiongame.game.game_object.BitmapDrawable
 import com.github.ivanshafran.emotiongame.game.game_object.ColorDrawable
 import com.github.ivanshafran.emotiongame.game.game_object.Rect
+import com.github.ivanshafran.emotiongame.game.game_object.TextDrawable
 import com.github.ivanshafran.emotiongame.resource.ResourceProvider
 import kotlin.random.Random
 
@@ -57,6 +58,8 @@ class StepProcessor(
         doRoadLinesStep()
         updateSky()
         doEnemyStep()
+        updateScore()
+        updateLife()
     }
 
     private fun updateSun() {
@@ -136,6 +139,24 @@ class StepProcessor(
                 rect.y = getYPositionForSecondLine(config, rect.height)
             }
         }
+    }
+
+    private fun updateLife() {
+        val life = gameState.life
+        life.gameObject.drawable = TextDrawable(
+            text = resourceProvider.getString(config.lifeConfig.stringRes, life.value),
+            textColor = config.lifeConfig.textColor,
+            textSize = config.lifeConfig.textSize
+        )
+    }
+
+    private fun updateScore() {
+        val score = gameState.score
+        score.gameObject.drawable = TextDrawable(
+            text = resourceProvider.getString(config.scoreConfig.stringRes, score.value),
+            textColor = config.scoreConfig.textColor,
+            textSize = config.scoreConfig.textSize
+        )
     }
 
     private fun isRectIntersects(first: Rect, second: Rect): Boolean {
