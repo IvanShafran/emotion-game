@@ -57,6 +57,7 @@ class StepProcessor(
         updateSun()
         doRoadLinesStep()
         updateSky()
+        updatePlayer()
         doEnemyStep()
         doBonusStep()
         updateScore()
@@ -108,6 +109,15 @@ class StepProcessor(
             if (isRectToLeftOfScreen(rect)) {
                 rect.x = config.canvasConfig.width.toFloat()
             }
+        }
+    }
+
+    private fun updatePlayer() {
+        val rect = gameState.player.gameObject.rect
+        rect.y = if (isSmiling) {
+            getYPositionForFirstLine(config, rect.height)
+        } else {
+            getYPositionForSecondLine(config, rect.height)
         }
     }
 
