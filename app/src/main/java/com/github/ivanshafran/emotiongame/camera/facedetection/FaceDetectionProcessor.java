@@ -17,8 +17,10 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import com.github.ivanshafran.emotiongame.camera.*;
-import com.github.ivanshafran.emotiongame.game.GameSurfaceView;
+
+import java.io.IOException;
+import java.util.List;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
@@ -26,8 +28,10 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 
-import java.io.IOException;
-import java.util.List;
+import com.github.ivanshafran.emotiongame.camera.CameraImageGraphic;
+import com.github.ivanshafran.emotiongame.camera.FrameMetadata;
+import com.github.ivanshafran.emotiongame.camera.GraphicOverlay;
+import com.github.ivanshafran.emotiongame.camera.VisionProcessorBase;
 
 /**
  * Face Detector Demo.
@@ -38,7 +42,11 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
 
     private final FirebaseVisionFaceDetector detector;
 
-    public FaceDetectionProcessor() {
+    private final FaceFeaturesListener listener;
+
+    public FaceDetectionProcessor(@NonNull FaceFeaturesListener listener) {
+        this.listener = listener;
+
         FirebaseVisionFaceDetectorOptions options =
                 new FirebaseVisionFaceDetectorOptions.Builder()
                         .setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
@@ -78,7 +86,7 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
         }
 
         FirebaseVisionFace face = faces.get(0);
-        GameSurfaceView.setFaceFeatures(new FaceFeatures(
+        listener.onFaceFeatures(new FaceFeatures(
                 face.getSmilingProbability(),
                 face.getLeftEyeOpenProbability(),
                 face.getRightEyeOpenProbability()

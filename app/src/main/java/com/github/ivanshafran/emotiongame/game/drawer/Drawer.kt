@@ -9,7 +9,12 @@ import android.support.annotation.DimenRes
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import com.github.ivanshafran.emotiongame.game.GameState
-import com.github.ivanshafran.emotiongame.game.game_object.*
+import com.github.ivanshafran.emotiongame.game.game_object.AnimatedBitmapDrawable
+import com.github.ivanshafran.emotiongame.game.game_object.BitmapDrawable
+import com.github.ivanshafran.emotiongame.game.game_object.ColorDrawable
+import com.github.ivanshafran.emotiongame.game.game_object.GameObject
+import com.github.ivanshafran.emotiongame.game.game_object.Rect
+import com.github.ivanshafran.emotiongame.game.game_object.TextDrawable
 
 class Drawer(private val context: Context) {
 
@@ -44,8 +49,6 @@ class Drawer(private val context: Context) {
         drawGameObject(canvas, gameState.life.gameObject)
 
         drawGameObject(canvas, gameState.score.gameObject)
-
-        drawGameObject(canvas, gameState.sun.gameObject)
     }
 
     private fun drawGameObject(canvas: Canvas, gameObject: GameObject) {
@@ -127,5 +130,4 @@ class Drawer(private val context: Context) {
             y.toInt() + height
         )
     }
-
 }

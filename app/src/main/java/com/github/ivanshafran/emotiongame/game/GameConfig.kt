@@ -26,15 +26,6 @@ data class CloudConfig(
     val yHeightFraction: Float
 )
 
-data class SunConfig(
-    @DrawableRes val smileNotBlinkRes: Int,
-    @DrawableRes val smileBlinkRes: Int,
-    @DrawableRes val notSmileNotBlinkRes: Int,
-    @DrawableRes val notSmileBlinkRes: Int,
-    val heightFraction: Float,
-    val widthToHeightAspectRatio: Float
-)
-
 data class RoadConfig(
     val doubleGrassHeightFraction: Float,
     @ColorRes val grassColor: Int,
@@ -107,7 +98,6 @@ data class SpeedMultiplierConfig(
 data class GameConfig(
     val canvasConfig: CanvasConfig,
     val skyConfig: SkyConfig,
-    val sunConfig: SunConfig,
     val roadConfig: RoadConfig,
     val playerConfig: PlayerConfig,
     val enemyConfig: EnemyConfig,

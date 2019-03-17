@@ -37,15 +37,6 @@ val defaultSkyConfig = SkyConfig(
     )
 )
 
-val defaultSunConfig = SunConfig(
-    smileNotBlinkRes = R.drawable.sun_smile_not_blink,
-    smileBlinkRes = R.drawable.sun_smile_blink,
-    notSmileNotBlinkRes = R.drawable.sun_not_smile_not_blink,
-    notSmileBlinkRes = R.drawable.sun_not_smile_blink,
-    heightFraction = SKY_FRACTION * 0.8f,
-    widthToHeightAspectRatio = 1f
-)
-
 val defaultRoadConfig = RoadConfig(
     doubleGrassHeightFraction = FULL_ROAD_FRACTION * 0.25f,
     grassColor = R.color.game_road_grass,

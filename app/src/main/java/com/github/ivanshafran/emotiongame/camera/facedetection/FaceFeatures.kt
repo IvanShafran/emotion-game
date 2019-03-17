@@ -1,4 +1,4 @@
-package com.github.ivanshafran.emotiongame.camera
+package com.github.ivanshafran.emotiongame.camera.facedetection
 
 data class FaceFeatures(
     val smileProbability: Float,

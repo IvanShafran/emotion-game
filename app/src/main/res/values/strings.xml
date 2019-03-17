@@ -2,4 +2,16 @@
     <string name="app_name">EmotionGame</string>
     <string name="score">Score: %1$s</string>
     <string name="life">Life: %1$s</string>
+
+    <string name="need_camera_permission_rationale">Game uses camera\nto capture your emotions.\nAllow application\nto use camera.</string>
+    <string name="need_camera_permission_button">Allow</string>
+    <string name="rules_smile">😄=👆</string>
+    <string name="rules_not_smile">😐=👇</string>
+    <string name="rules_blink">🙈=2🍰</string>
+
+    <string name="smile_reaction">😄</string>
+    <string name="not_smile_reaction">😐</string>
+    <string name="not_blink_reaction">👀</string>
+    <string name="blink_reaction">🙈</string>
+
 </resources>

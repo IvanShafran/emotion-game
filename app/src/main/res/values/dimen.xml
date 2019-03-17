@@ -8,4 +8,8 @@
     <dimen name="cloud_1_speed">20dp</dimen>
     <dimen name="cloud_2_speed">10dp</dimen>
     <dimen name="cloud_3_speed">30dp</dimen>
+
+    <dimen name="rules_text_size">24sp</dimen>
+    <dimen name="reaction_text_size">30sp</dimen>
+
 </resources>

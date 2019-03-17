@@ -1,34 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:fitsSystemWindows="false"
-        android:id="@+id/fireTopLayout"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000"
-        android:keepScreenOn="true">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorPrimary"
+    android:keepScreenOn="true">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/centerVerticalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Camera -->
 
     <com.github.ivanshafran.emotiongame.camera.CameraSourcePreview
-            android:id="@+id/firePreview"
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp">
+        android:id="@+id/cameraPreview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/rulesBlinkTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.github.ivanshafran.emotiongame.camera.GraphicOverlay
-                android:id="@+id/fireFaceOverlay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"/>
+            android:id="@+id/fireFaceOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
     </com.github.ivanshafran.emotiongame.camera.CameraSourcePreview>
 
-    <com.github.ivanshafran.emotiongame.game.GameSurfaceView
-            android:id="@+id/surfaceView"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"/>
+    <!-- Reactions -->
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/smileReactionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/not_smile_reaction"
+        android:textSize="@dimen/reaction_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/rulesBlinkTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/blinkReactionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/not_blink_reaction"
+        android:textSize="@dimen/reaction_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/rulesBlinkTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Rules -->
+
+    <TextView
+        android:id="@+id/rulesSmileTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/rules_smile"
+        android:textSize="@dimen/rules_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/centerVerticalGuideline"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/rulesBlinkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rules_blink"
+        android:textSize="@dimen/rules_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/centerVerticalGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/rulesNotSmileTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/rules_not_smile"
+        android:textSize="@dimen/rules_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/centerVerticalGuideline"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Game -->
+
+    <com.github.ivanshafran.emotiongame.game.GameSurfaceView
+        android:id="@+id/gameSurfaceView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/centerVerticalGuideline" />
+
+    <!-- Permissions -->
+
+    <TextView
+        android:id="@+id/needPermissionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/need_camera_permission_rationale"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/needPermissionImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_camera"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/needPermissionTextView" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/needPermissionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="32dp"
+        android:text="@string/need_camera_permission_button"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Main menu -->
+
+    <ImageView
+        android:id="@+id/infoButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_info"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/centerVerticalGuideline"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/playButton"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/ic_play"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/centerVerticalGuideline"
+        tools:visibility="visible" />
+
+</android.support.constraint.ConstraintLayout>

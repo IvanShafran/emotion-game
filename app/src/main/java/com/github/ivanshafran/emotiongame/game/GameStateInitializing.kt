@@ -13,25 +13,7 @@ fun getInitializedGameState(config: GameConfig, resourceProvider: ResourceProvid
         enemy = getInitializedEnemy(config, resourceProvider),
         player = getInitializedPlayer(config, resourceProvider),
         road = getInitializedRoad(config),
-        sky = getInitializedSky(config, resourceProvider),
-        sun = getInitializedSun(config)
-    )
-}
-
-private fun getInitializedSun(config: GameConfig): Sun {
-    val height = (config.canvasConfig.height * config.sunConfig.heightFraction).toInt()
-    val width = (height * config.sunConfig.widthToHeightAspectRatio).toInt()
-
-    return Sun(
-        gameObject = GameObject(
-            drawable = BitmapDrawable(config.sunConfig.notSmileNotBlinkRes),
-            rect = Rect(
-                x = (config.canvasConfig.width - width).toFloat(),
-                y = 0f,
-                width = width,
-                height = height
-            )
-        )
+        sky = getInitializedSky(config, resourceProvider)
     )
 }
 
