@@ -10,7 +10,7 @@
     <dimen name="cloud_3_speed">30dp</dimen>
 
     <dimen name="rules_text_size">24sp</dimen>
-    <dimen name="reaction_text_size">30sp</dimen>
+    <dimen name="reaction_text_size">36sp</dimen>
     <dimen name="menu_text_size">24sp</dimen>
 
     <dimen name="rules_margin">4dp</dimen>

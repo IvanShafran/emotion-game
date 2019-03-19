@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <!-- Camera -->
 
@@ -41,7 +41,7 @@
         android:id="@+id/smileReactionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="16dp"
         android:text="@string/not_smile_reaction"
         android:textSize="@dimen/reaction_text_size"
         android:visibility="gone"
@@ -53,7 +53,7 @@
         android:id="@+id/blinkReactionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/not_blink_reaction"
         android:textSize="@dimen/reaction_text_size"
         android:visibility="gone"
