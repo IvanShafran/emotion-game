@@ -30,6 +30,8 @@ class GameSurfaceView(
     @Volatile
     private var emotions = Emotions(isSmile = false, isBlink = false)
 
+    private var listener: GameEndListener? = null
+
     init {
         surfaceHolder.addCallback(this)
     }
@@ -63,6 +65,10 @@ class GameSurfaceView(
     fun resumeGame() {
         isGameInProgress = true
         isGameAfterResume = true
+    }
+
+    fun setGameEndListener(listener: GameEndListener) {
+        this.listener = listener
     }
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
@@ -101,6 +107,11 @@ class GameSurfaceView(
                 emotions
             )
             drawer.draw(canvas, gameState)
+
+            if (gameState.life.value <= 0) {
+                isGameInProgress = false
+                post { listener?.onGameEnd(gameState.score.value) }
+            }
 
             surfaceHolder.unlockCanvasAndPost(canvas)
         }

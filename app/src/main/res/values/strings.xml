@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">EmotionGame</string>
     <string name="score">Score: %1$s</string>
+    <string name="score_menu">Score: %1$d 👏</string>
     <string name="life">Life: %1$s</string>
 
     <string name="need_camera_permission_rationale">Game uses camera\nto capture your emotions.\nAllow application\nto use camera.</string>

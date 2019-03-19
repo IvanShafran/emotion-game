@@ -16,15 +16,17 @@ import com.github.ivanshafran.emotiongame.camera.facedetection.FaceDetectionProc
 import com.github.ivanshafran.emotiongame.camera.facedetection.FaceFeatures
 import com.github.ivanshafran.emotiongame.camera.facedetection.FaceFeaturesListener
 import com.github.ivanshafran.emotiongame.game.Emotions
+import com.github.ivanshafran.emotiongame.game.GameEndListener
 import com.github.ivanshafran.emotiongame.game.GameSurfaceView
-import kotlinx.android.synthetic.main.activity_live_preview.*
+import kotlinx.android.synthetic.main.activity_main_preview.*
 import java.io.IOException
 
 class MainActivity :
     AppCompatActivity(),
     OnRequestPermissionsResultCallback,
     View.OnClickListener,
-    FaceFeaturesListener {
+    FaceFeaturesListener,
+    GameEndListener {
 
     companion object {
         private const val TAG = "MainActivity"
@@ -45,11 +47,12 @@ class MainActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_live_preview)
+        setContentView(R.layout.activity_main_preview)
 
         cameraPreview = findViewById(R.id.cameraPreview)
         graphicOverlay = findViewById(R.id.fireFaceOverlay)
         gameSurfaceView = findViewById(R.id.gameSurfaceView)
+        gameSurfaceView.setGameEndListener(this)
         needPermissionViews = listOf(
             findViewById(R.id.needPermissionButton),
             findViewById(R.id.needPermissionImageView),
@@ -234,6 +237,15 @@ class MainActivity :
         showGame()
     }
 
+    override fun onGameEnd(score: Int) {
+        hideGame()
+        isGamePaused = false
+        showMainMenu()
+
+        scoreTextView.visibility = View.VISIBLE
+        scoreTextView.text = getString(R.string.score_menu, score)
+    }
+
     private fun showPermissionViews() {
         needPermissionViews.forEach { it.visibility = View.VISIBLE }
     }
@@ -260,6 +272,7 @@ class MainActivity :
         infoLabelTextView.visibility = View.GONE
         restartButton.visibility = View.GONE
         restartLabelTextView.visibility = View.GONE
+        scoreTextView.visibility = View.GONE
     }
 
     private fun showGame() {
