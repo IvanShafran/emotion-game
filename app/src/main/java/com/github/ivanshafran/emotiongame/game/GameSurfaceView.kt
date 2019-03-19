@@ -94,7 +94,7 @@ class GameSurfaceView(
                 continue
             }
 
-            val canvas = surfaceHolder.lockCanvas()
+            val canvas = surfaceHolder.lockCanvas() ?: return
 
             val gameState = stepProcessor.doNextStep(
                 timeInMillis,
