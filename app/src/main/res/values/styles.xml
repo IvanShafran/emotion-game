@@ -1,14 +1,19 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/Widget.AppTheme.ButtonStyle</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+    </style>
+
+    <style name="MainActivityTheme" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="buttonStyle">@style/Widget.AppTheme.ButtonStyle</item>
-        <item name="colorButtonNormal">@color/colorAccent</item>
+
     </style>
 
     <style name="Widget.AppTheme.ButtonStyle" parent="Widget.AppCompat.Button">

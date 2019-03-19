@@ -12,4 +12,6 @@
     <color name="game_road_line">#FFFFFF</color>
     <color name="score_text_color">@color/colorPrimary</color>
     <color name="life_text_color">@color/colorAccent</color>
+
+    <color name="smile_text_color">#FFF</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.github.ivanshafran.emotiongame
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -18,7 +19,7 @@ import com.github.ivanshafran.emotiongame.camera.facedetection.FaceFeaturesListe
 import com.github.ivanshafran.emotiongame.game.Emotions
 import com.github.ivanshafran.emotiongame.game.GameEndListener
 import com.github.ivanshafran.emotiongame.game.GameSurfaceView
-import kotlinx.android.synthetic.main.activity_main_preview.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
 
 class MainActivity :
@@ -47,7 +48,7 @@ class MainActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_preview)
+        setContentView(R.layout.activity_main)
 
         cameraPreview = findViewById(R.id.cameraPreview)
         graphicOverlay = findViewById(R.id.fireFaceOverlay)
@@ -63,6 +64,7 @@ class MainActivity :
         infoButton.setOnClickListener(this)
         restartButton.setOnClickListener(this)
         pauseButton.setOnClickListener(this)
+        infoButton.setOnClickListener(this)
 
         findViewById<View>(R.id.needPermissionButton).setOnClickListener(this)
     }
@@ -203,6 +205,7 @@ class MainActivity :
             R.id.playButton -> onPlayButtonClick()
             R.id.pauseButton -> onPauseClick()
             R.id.restartButton -> onRestartClick()
+            R.id.infoButton -> onInfoClick()
             else -> {
                 // Do nothing
             }
@@ -244,6 +247,10 @@ class MainActivity :
 
         scoreTextView.visibility = View.VISIBLE
         scoreTextView.text = getString(R.string.score_menu, score)
+    }
+
+    private fun onInfoClick() {
+        startActivity(Intent(this, InfoActivity::class.java))
     }
 
     private fun showPermissionViews() {

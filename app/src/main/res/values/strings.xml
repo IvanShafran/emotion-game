@@ -20,4 +20,7 @@
     <string name="menu_restart_label">Restart</string>
     <string name="menu_pause_label">Pause</string>
 
+    <string name="info_label">Info</string>
+    <string name="open_source_library_notices">Open source library notices</string>
+
 </resources>
