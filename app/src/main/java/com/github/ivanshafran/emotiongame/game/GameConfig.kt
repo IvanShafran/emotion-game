@@ -2,7 +2,6 @@ package com.github.ivanshafran.emotiongame.game
 
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
-import android.support.annotation.DrawableRes
 import android.support.annotation.StringRes
 
 data class CanvasConfig(
@@ -65,7 +64,9 @@ data class ScoreConfig(
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
     val dayBonusScore: Int,
-    val nightBonusScore: Int
+    val nightBonusScore: Int,
+    @DimenRes val marginTopRes: Int,
+    @DimenRes val marginStartRes: Int
 )
 
 data class LifeConfig(
@@ -74,7 +75,9 @@ data class LifeConfig(
     @StringRes val stringRes: Int,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
-    val initLifeCount: Int
+    val initLifeCount: Int,
+    @DimenRes val marginBottomRes: Int,
+    @DimenRes val marginStartRes: Int
 )
 
 data class BonusConfig(

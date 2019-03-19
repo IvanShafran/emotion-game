@@ -9,12 +9,7 @@ import android.support.annotation.DimenRes
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import com.github.ivanshafran.emotiongame.game.GameState
-import com.github.ivanshafran.emotiongame.game.game_object.AnimatedBitmapDrawable
-import com.github.ivanshafran.emotiongame.game.game_object.BitmapDrawable
-import com.github.ivanshafran.emotiongame.game.game_object.ColorDrawable
-import com.github.ivanshafran.emotiongame.game.game_object.GameObject
-import com.github.ivanshafran.emotiongame.game.game_object.Rect
-import com.github.ivanshafran.emotiongame.game.game_object.TextDrawable
+import com.github.ivanshafran.emotiongame.game.game_object.*
 
 class Drawer(private val context: Context) {
 
@@ -75,6 +70,7 @@ class Drawer(private val context: Context) {
         val color = ContextCompat.getColor(context, textColor)
         return textPaintCache.getOrPut(TextPaintKey(color, size)) {
             Paint()
+                .apply { isAntiAlias = true }
                 .apply { setColor(color) }
                 .apply { setTextSize(size.toFloat()) }
                 .apply { textAlign = Paint.Align.LEFT }

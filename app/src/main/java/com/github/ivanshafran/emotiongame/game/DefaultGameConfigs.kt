@@ -83,7 +83,9 @@ val defaultScoreConfig = ScoreConfig(
     heightFraction = SKY_FRACTION * 0.3f,
     widthToHeightAspectRatio = 10f,
     dayBonusScore = 1,
-    nightBonusScore = 2
+    nightBonusScore = 2,
+    marginStartRes = R.dimen.score_margin_start,
+    marginTopRes = R.dimen.score_margin_top
 )
 
 val defaultLifeConfig = LifeConfig(
@@ -92,7 +94,9 @@ val defaultLifeConfig = LifeConfig(
     stringRes = R.string.life,
     initLifeCount = 3,
     heightFraction = SKY_FRACTION * 0.3f,
-    widthToHeightAspectRatio = 10f
+    widthToHeightAspectRatio = 10f,
+    marginBottomRes = R.dimen.life_margin_bottom,
+    marginStartRes = R.dimen.life_margin_start
 )
 
 val defaultBonusConfig = BonusConfig(

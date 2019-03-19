@@ -10,6 +10,6 @@
     <color name="game_road_border">#FFFFFF</color>
     <color name="game_road">#BABABA</color>
     <color name="game_road_line">#FFFFFF</color>
-    <color name="score_text_color">#FFFFFF</color>
-    <color name="life_text_color">#FF0000</color>
+    <color name="score_text_color">@color/colorPrimary</color>
+    <color name="life_text_color">@color/colorAccent</color>
 </resources>

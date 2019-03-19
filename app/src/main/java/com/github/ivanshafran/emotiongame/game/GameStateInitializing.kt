@@ -216,8 +216,10 @@ private fun getInitializedBonus(config: GameConfig, resourceProvider: ResourcePr
 
 private fun getInitializedLife(config: GameConfig, resourceProvider: ResourceProvider): Life {
     val lifeConfig = config.lifeConfig
-    val scoreHeight = config.canvasConfig.height * config.scoreConfig.heightFraction
     val height = (config.canvasConfig.height * lifeConfig.heightFraction).toInt()
+    val x = resourceProvider.getDimen(config.lifeConfig.marginStartRes).toFloat()
+    val marginBottom = resourceProvider.getDimen(config.lifeConfig.marginBottomRes)
+    val y = config.canvasConfig.height * config.skyConfig.heightFraction - height - marginBottom
     val width = (height * lifeConfig.widthToHeightAspectRatio).toInt()
     return Life(
         value = lifeConfig.initLifeCount,
@@ -227,7 +229,7 @@ private fun getInitializedLife(config: GameConfig, resourceProvider: ResourcePro
                 textSize = lifeConfig.textSize,
                 text = resourceProvider.getString(lifeConfig.stringRes, lifeConfig.initLifeCount)
             ),
-            rect = Rect(x = 0f, y = scoreHeight, width = width, height = height)
+            rect = Rect(x = x, y = y, width = width, height = height)
         )
     )
 }
@@ -235,6 +237,8 @@ private fun getInitializedLife(config: GameConfig, resourceProvider: ResourcePro
 private fun getInitializedScore(config: GameConfig, resourceProvider: ResourceProvider): Score {
     val height = (config.canvasConfig.height * config.scoreConfig.heightFraction).toInt()
     val width = (height * config.scoreConfig.widthToHeightAspectRatio).toInt()
+    val x = resourceProvider.getDimen(config.scoreConfig.marginStartRes).toFloat()
+    val y = resourceProvider.getDimen(config.scoreConfig.marginTopRes).toFloat()
     return Score(
         value = 0,
         gameObject = GameObject(
@@ -243,7 +247,7 @@ private fun getInitializedScore(config: GameConfig, resourceProvider: ResourcePr
                 textSize = config.scoreConfig.textSize,
                 textColor = config.scoreConfig.textColor
             ),
-            rect = Rect(x = 0f, y = 0f, width = width, height = height)
+            rect = Rect(x = x, y = y, width = width, height = height)
         )
     )
 }
