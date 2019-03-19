@@ -41,9 +41,10 @@
         android:id="@+id/smileReactionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
         android:text="@string/not_smile_reaction"
         android:textSize="@dimen/reaction_text_size"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/rulesBlinkTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,9 +53,10 @@
         android:id="@+id/blinkReactionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:text="@string/not_blink_reaction"
         android:textSize="@dimen/reaction_text_size"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/rulesBlinkTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -65,9 +67,12 @@
         android:id="@+id/rulesSmileTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/rules_margin"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/rules_margin"
         android:text="@string/rules_smile"
         android:textSize="@dimen/rules_text_size"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/centerVerticalGuideline"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -75,8 +80,11 @@
         android:id="@+id/rulesBlinkTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/rules_margin"
+        android:layout_marginTop="@dimen/rules_margin"
         android:text="@string/rules_blink"
         android:textSize="@dimen/rules_text_size"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/centerVerticalGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -85,9 +93,12 @@
         android:id="@+id/rulesNotSmileTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/rules_margin"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="@dimen/rules_margin"
         android:text="@string/rules_not_smile"
         android:textSize="@dimen/rules_text_size"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/centerVerticalGuideline"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -97,11 +108,34 @@
         android:id="@+id/gameSurfaceView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/centerVerticalGuideline" />
+
+    <ImageView
+        android:id="@+id/pauseButton"
+        android:layout_width="@dimen/button_up_size"
+        android:layout_height="@dimen/button_up_size"
+        android:layout_margin="@dimen/button_border_margin"
+        android:src="@drawable/ic_pause"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/centerVerticalGuideline"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/pauseLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_label_margin_top"
+        android:text="@string/menu_pause_label"
+        android:textSize="@dimen/menu_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/pauseButton"
+        app:layout_constraintTop_toBottomOf="@+id/pauseButton"
+        tools:visibility="visible" />
 
     <!-- Permissions -->
 
@@ -148,13 +182,25 @@
 
     <ImageView
         android:id="@+id/infoButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="16dp"
+        android:layout_width="@dimen/button_up_size"
+        android:layout_height="@dimen/button_up_size"
+        android:layout_margin="@dimen/button_border_margin"
         android:src="@drawable/ic_info"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/centerVerticalGuideline"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/infoLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_label_margin_top"
+        android:text="@string/menu_info_label"
+        android:textSize="@dimen/menu_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/infoButton"
+        app:layout_constraintTop_toBottomOf="@+id/infoButton"
         tools:visibility="visible" />
 
     <ImageView
@@ -167,6 +213,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/centerVerticalGuideline"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/playLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_label_margin_top"
+        android:text="@string/menu_play_label"
+        android:textSize="@dimen/menu_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
+        app:layout_constraintStart_toStartOf="@+id/playButton"
+        app:layout_constraintTop_toBottomOf="@+id/playButton"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/restartButton"
+        android:layout_width="@dimen/button_up_size"
+        android:layout_height="@dimen/button_up_size"
+        android:layout_margin="@dimen/button_border_margin"
+        android:src="@drawable/ic_restart"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/centerVerticalGuideline"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/restartLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_label_margin_top"
+        android:text="@string/menu_restart_label"
+        android:textSize="@dimen/menu_text_size"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/restartButton"
+        app:layout_constraintTop_toBottomOf="@+id/restartButton"
         tools:visibility="visible" />
 
 </android.support.constraint.ConstraintLayout>

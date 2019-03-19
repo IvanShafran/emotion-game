@@ -6,8 +6,6 @@ import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.github.ivanshafran.emotiongame.game.drawer.Drawer
 import com.github.ivanshafran.emotiongame.resource.ResourceProvider
-import java.util.concurrent.locks.ReentrantLock
-import kotlin.concurrent.withLock
 
 // Use only constructor for xml
 class GameSurfaceView(
@@ -21,8 +19,11 @@ class GameSurfaceView(
     private val drawer: Drawer = Drawer(context)
     private val surfaceHolder: SurfaceHolder = this.holder
 
-    private val lock = ReentrantLock()
+    @Volatile
     private var isGameInProgress = false
+    @Volatile
+    private var isGameAfterResume = false
+    @Volatile
     private var stepProcessor: StepProcessor? = null
     @Volatile
     private var isThreadRunning = false
@@ -31,14 +32,13 @@ class GameSurfaceView(
 
     init {
         surfaceHolder.addCallback(this)
-        setZOrderOnTop(true)
     }
 
     fun setEmotions(emotions: Emotions) {
         this.emotions = emotions
     }
 
-    fun startNewGame() = lock.withLock {
+    fun startNewGame() {
         val config = GameConfig(
             CanvasConfig(width, height),
             defaultSkyConfig,
@@ -53,14 +53,16 @@ class GameSurfaceView(
 
         stepProcessor = StepProcessor(config, ResourceProvider(context))
         isGameInProgress = true
+        isGameAfterResume = false
     }
 
-    fun pauseGame() = lock.withLock {
+    fun pauseGame() {
         isGameInProgress = false
     }
 
-    fun resumeGame() = lock.withLock {
+    fun resumeGame() {
         isGameInProgress = true
+        isGameAfterResume = true
     }
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
@@ -80,20 +82,27 @@ class GameSurfaceView(
 
     override fun run() {
         while (isThreadRunning) {
-            val stepProcessor = stepProcessor
-            if (isGameInProgress && stepProcessor != null) {
-                val canvas = surfaceHolder.lockCanvas()
+            fpsSleep()
 
-                val gameState = stepProcessor.doNextStep(
-                    System.currentTimeMillis(),
-                    emotions
-                )
-                drawer.draw(canvas, gameState)
+            val stepProcessor = stepProcessor ?: return
+            if (!isGameInProgress) return
+            val timeInMillis = System.currentTimeMillis()
 
-                surfaceHolder.unlockCanvasAndPost(canvas)
-
-                fpsSleep()
+            if (isGameAfterResume) {
+                isGameAfterResume = false
+                stepProcessor.recalculateTimeAfterResume(timeInMillis)
+                continue
             }
+
+            val canvas = surfaceHolder.lockCanvas()
+
+            val gameState = stepProcessor.doNextStep(
+                timeInMillis,
+                emotions
+            )
+            drawer.draw(canvas, gameState)
+
+            surfaceHolder.unlockCanvasAndPost(canvas)
         }
     }
 

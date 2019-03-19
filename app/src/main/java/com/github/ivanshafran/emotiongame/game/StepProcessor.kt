@@ -41,6 +41,11 @@ class StepProcessor(
         return gameState
     }
 
+    fun recalculateTimeAfterResume(timeInMillis: Long) {
+        startTimeInMillis += timeInMillis - this.timeInMillis
+        this.timeInMillis = timeInMillis
+    }
+
     private fun doNextStep() {
         doRoadLinesStep()
         updateSky()

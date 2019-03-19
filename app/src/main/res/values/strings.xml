@@ -14,4 +14,9 @@
     <string name="not_blink_reaction">👀</string>
     <string name="blink_reaction">🙈</string>
 
+    <string name="menu_play_label">Play</string>
+    <string name="menu_info_label">Info</string>
+    <string name="menu_restart_label">Restart</string>
+    <string name="menu_pause_label">Pause</string>
+
 </resources>
