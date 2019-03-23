@@ -4,6 +4,7 @@
     <dimen name="enemy_speed">120dp</dimen>
     <dimen name="bonus_speed">100dp</dimen>
     <dimen name="score_text_size">30sp</dimen>
+    <dimen name="cake_text_size">30sp</dimen>
     <dimen name="life_text_size">30sp</dimen>
     <dimen name="cloud_1_speed">20dp</dimen>
     <dimen name="cloud_2_speed">10dp</dimen>

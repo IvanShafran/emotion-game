@@ -166,6 +166,8 @@ class StepProcessor(
             } else {
                 rect.y = getYPositionForSecondLine(config, rect.height)
             }
+
+            (gameState.bonus.gameObject.drawable as TextDrawable).text = config.bonusConfig.cakeEmojis.random()
         }
     }
 

@@ -200,8 +200,10 @@ private fun getInitializedBonus(config: GameConfig, resourceProvider: ResourcePr
     val width = (height * config.bonusConfig.widthToHeightAspectRatio).toInt()
     return Bonus(
         gameObject = GameObject(
-            drawable = BitmapDrawable(
-                filepath = config.bonusConfig.filepathList.first()
+            drawable = TextDrawable(
+                text = config.bonusConfig.cakeEmojis.first(),
+                textSize = config.bonusConfig.textSize,
+                textColor = config.bonusConfig.textColor
             ),
             rect = Rect(
                 x = config.canvasConfig.width.toFloat(),

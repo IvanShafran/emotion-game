@@ -83,9 +83,11 @@ data class BonusConfig(
     @DimenRes val speedDimenRes: Int,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
-    val filepathList: List<String>,
     val widthFractionStartOffset: Float,
-    val widthIntersectOffsetFraction: Float
+    val widthIntersectOffsetFraction: Float,
+    val cakeEmojis: List<String>,
+    @DimenRes val textSize: Int,
+    @ColorRes val textColor: Int
 )
 
 data class SpeedMultiplier(

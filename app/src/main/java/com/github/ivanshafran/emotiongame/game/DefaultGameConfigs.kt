@@ -115,10 +115,18 @@ val defaultBonusConfig = BonusConfig(
     speedDimenRes = R.dimen.bonus_speed,
     heightFraction = FULL_ROAD_FRACTION * 0.15f,
     widthToHeightAspectRatio = 1f,
-    filepathList = listOf(
-        "cake.png",
-        "bottle.png"
+    cakeEmojis = listOf(
+        "\uD83C\uDF66",
+        "\uD83C\uDF67",
+        "\uD83C\uDF68",
+        "\uD83C\uDF69",
+        "\uD83C\uDF70",
+        "\uD83C\uDF6D",
+        "\uD83C\uDF82",
+        "\uD83E\uDDC1"
     ),
+    textColor = R.color.cake_color,
+    textSize = R.dimen.cake_text_size,
     widthFractionStartOffset = 1f,
     widthIntersectOffsetFraction = 0.3f
 )
