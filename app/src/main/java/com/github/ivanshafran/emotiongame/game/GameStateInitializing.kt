@@ -223,13 +223,23 @@ private fun getInitializedLife(config: GameConfig, resourceProvider: ResourcePro
     val width = (height * lifeConfig.widthToHeightAspectRatio).toInt()
     return Life(
         value = lifeConfig.initLifeCount,
-        gameObject = GameObject(
-            drawable = TextDrawable(
-                textColor = lifeConfig.textColor,
-                textSize = lifeConfig.textSize,
-                text = resourceProvider.getString(lifeConfig.stringRes, lifeConfig.initLifeCount)
+        firstHeart = GameObject(
+            drawable = BitmapDrawable(
+                filepath = config.lifeConfig.fullHeartPath
             ),
             rect = Rect(x = x, y = y, width = width, height = height)
+        ),
+        secondHeart = GameObject(
+            drawable = BitmapDrawable(
+                filepath = config.lifeConfig.fullHeartPath
+            ),
+            rect = Rect(x = x + width, y = y, width = width, height = height)
+        ),
+        thirdHeart = GameObject(
+            drawable = BitmapDrawable(
+                filepath = config.lifeConfig.fullHeartPath
+            ),
+            rect = Rect(x = x + 2 * width, y = y, width = width, height = height)
         )
     )
 }

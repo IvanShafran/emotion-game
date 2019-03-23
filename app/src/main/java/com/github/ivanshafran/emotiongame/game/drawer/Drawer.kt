@@ -40,7 +40,9 @@ class Drawer(private val context: Context) {
 
         drawGameObject(canvas, gameState.bonus.gameObject)
 
-        drawGameObject(canvas, gameState.life.gameObject)
+        drawGameObject(canvas, gameState.life.firstHeart)
+        drawGameObject(canvas, gameState.life.secondHeart)
+        drawGameObject(canvas, gameState.life.thirdHeart)
 
         drawGameObject(canvas, gameState.score.gameObject)
     }

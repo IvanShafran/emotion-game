@@ -102,12 +102,11 @@ val defaultScoreConfig = ScoreConfig(
 )
 
 val defaultLifeConfig = LifeConfig(
-    textSize = R.dimen.life_text_size,
-    textColor = R.color.life_text_color,
-    stringRes = R.string.life,
+    fullHeartPath = "full_heart.png",
+    emptyHeartPath = "empty_heart.png",
     initLifeCount = 3,
-    heightFraction = SKY_FRACTION * 0.3f,
-    widthToHeightAspectRatio = 10f,
+    heightFraction = SKY_FRACTION * 0.2f,
+    widthToHeightAspectRatio = 1f,
     marginBottomRes = R.dimen.life_margin_bottom,
     marginStartRes = R.dimen.life_margin_start
 )

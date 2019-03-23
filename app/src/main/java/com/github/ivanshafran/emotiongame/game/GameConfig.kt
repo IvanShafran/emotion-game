@@ -70,9 +70,8 @@ data class ScoreConfig(
 )
 
 data class LifeConfig(
-    @DimenRes val textSize: Int,
-    @ColorRes val textColor: Int,
-    @StringRes val stringRes: Int,
+    val fullHeartPath: String,
+    val emptyHeartPath: String,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
     val initLifeCount: Int,

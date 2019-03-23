@@ -1,5 +1,6 @@
 package com.github.ivanshafran.emotiongame.game
 
+import com.github.ivanshafran.emotiongame.game.game_object.BitmapDrawable
 import com.github.ivanshafran.emotiongame.game.game_object.ColorDrawable
 import com.github.ivanshafran.emotiongame.game.game_object.Rect
 import com.github.ivanshafran.emotiongame.game.game_object.TextDrawable
@@ -170,11 +171,17 @@ class StepProcessor(
 
     private fun updateLife() {
         val life = gameState.life
-        life.gameObject.drawable = TextDrawable(
-            text = resourceProvider.getString(config.lifeConfig.stringRes, life.value),
-            textColor = config.lifeConfig.textColor,
-            textSize = config.lifeConfig.textSize
-        )
+        val emptyHeartPath = config.lifeConfig.emptyHeartPath
+
+        when (life.value) {
+            2 -> {
+                (life.thirdHeart.drawable as BitmapDrawable).filepath = emptyHeartPath
+            }
+            1 -> {
+                (life.secondHeart.drawable as BitmapDrawable).filepath = emptyHeartPath
+                (life.thirdHeart.drawable as BitmapDrawable).filepath = emptyHeartPath
+            }
+        }
     }
 
     private fun updateScore() {
@@ -188,9 +195,9 @@ class StepProcessor(
 
     private fun isRectIntersects(first: Rect, second: Rect): Boolean {
         return isPointInRect(first.x, first.y, second) ||
-            isPointInRect(first.x, first.y + first.height, second) ||
-            isPointInRect(first.x + first.width, first.y, second) ||
-            isPointInRect(first.x + first.width, first.y + first.height, second)
+                isPointInRect(first.x, first.y + first.height, second) ||
+                isPointInRect(first.x + first.width, first.y, second) ||
+                isPointInRect(first.x + first.width, first.y + first.height, second)
     }
 
     private fun isPointInRect(x: Float, y: Float, rect: Rect): Boolean {

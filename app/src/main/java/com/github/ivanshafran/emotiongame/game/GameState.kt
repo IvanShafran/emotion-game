@@ -9,7 +9,9 @@ data class Score(
 
 data class Life(
     var value: Int,
-    var gameObject: GameObject
+    var firstHeart: GameObject,
+    val secondHeart: GameObject,
+    val thirdHeart: GameObject
 )
 
 data class Player(

@@ -8,7 +8,7 @@ sealed class CanvasDrawable
 
 /** Should be drawn as bitmap */
 data class BitmapDrawable(
-    val filepath: String
+    var filepath: String
 ) : CanvasDrawable()
 
 /** Should be drawn as color */
