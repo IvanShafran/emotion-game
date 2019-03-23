@@ -11,7 +11,7 @@ val defaultSkyConfig = SkyConfig(
     nightColor = R.color.game_sky_night,
     cloudConfigs = listOf(
         CloudConfig(
-            drawableRes = R.drawable.cloud_1,
+            filepath = "cloud_1.png",
             heightFraction = SKY_FRACTION * 0.2f,
             widthToHeightAspectRatio = 2f,
             speedDimenRes = R.dimen.cloud_1_speed,
@@ -19,7 +19,7 @@ val defaultSkyConfig = SkyConfig(
             yHeightFraction = SKY_FRACTION * 0.5f
         ),
         CloudConfig(
-            drawableRes = R.drawable.cloud_2,
+            filepath = "cloud_2.png",
             heightFraction = SKY_FRACTION * 0.15f,
             widthToHeightAspectRatio = 2f,
             speedDimenRes = R.dimen.cloud_2_speed,
@@ -27,7 +27,7 @@ val defaultSkyConfig = SkyConfig(
             yHeightFraction = SKY_FRACTION * 0.1f
         ),
         CloudConfig(
-            drawableRes = R.drawable.cloud_3,
+            filepath = "cloud_3.png",
             heightFraction = SKY_FRACTION * 0.3f,
             widthToHeightAspectRatio = 2f,
             speedDimenRes = R.dimen.cloud_3_speed,
@@ -54,11 +54,17 @@ val defaultPlayerConfig = PlayerConfig(
     speedDimenRes = R.dimen.player_speed,
     heightFraction = FULL_ROAD_FRACTION * 0.3f,
     widthToHeightAspectRatio = 1f,
-    animationDrawableResList = listOf(
-        R.drawable.nyan_cat_1,
-        R.drawable.nyan_cat_2
+    animationFilepathList = listOf(
+        "cat/cat_run_0.png",
+        "cat/cat_run_1.png",
+        "cat/cat_run_2.png",
+        "cat/cat_run_3.png",
+        "cat/cat_run_4.png",
+        "cat/cat_run_5.png",
+        "cat/cat_run_6.png",
+        "cat/cat_run_7.png"
     ),
-    animationFrameSkipCount = 20,
+    animationFrameSkipCount = 5,
     startMarginWidthFraction = 0.05f
 )
 
@@ -66,14 +72,21 @@ val defaultEnemyConfig = EnemyConfig(
     speedDimenRes = R.dimen.enemy_speed,
     heightFraction = FULL_ROAD_FRACTION * 0.3f,
     widthToHeightAspectRatio = 1f,
-    animationDrawableResList = listOf(
-        R.drawable.dog_1,
-        R.drawable.dog_2
-
+    animationFilepathList = listOf(
+        "zombie_girl/zombie_girl_0.png",
+        "zombie_girl/zombie_girl_1.png",
+        "zombie_girl/zombie_girl_2.png",
+        "zombie_girl/zombie_girl_3.png",
+        "zombie_girl/zombie_girl_4.png",
+        "zombie_girl/zombie_girl_5.png",
+        "zombie_girl/zombie_girl_6.png",
+        "zombie_girl/zombie_girl_7.png",
+        "zombie_girl/zombie_girl_8.png",
+        "zombie_girl/zombie_girl_9.png"
     ),
-    animationFrameSkipCount = 20,
+    animationFrameSkipCount = 7,
     widthFractionStartOffset = 2f,
-    widthIntersectOffsetFraction = 0.2f
+    widthIntersectOffsetFraction = 0.45f
 )
 
 val defaultScoreConfig = ScoreConfig(
@@ -103,12 +116,12 @@ val defaultBonusConfig = BonusConfig(
     speedDimenRes = R.dimen.bonus_speed,
     heightFraction = FULL_ROAD_FRACTION * 0.15f,
     widthToHeightAspectRatio = 1f,
-    drawableResList = listOf(
-        R.drawable.cake,
-        R.drawable.bottle
+    filepathList = listOf(
+        "cake.png",
+        "bottle.png"
     ),
     widthFractionStartOffset = 1f,
-    widthIntersectOffsetFraction = 0.2f
+    widthIntersectOffsetFraction = 0.3f
 )
 
 val defaultSpeedMultiplierConfig = SpeedMultiplierConfig(

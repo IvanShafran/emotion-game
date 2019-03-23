@@ -43,7 +43,7 @@ private fun getInitializedClouds(config: GameConfig, resourceProvider: ResourceP
 
         Cloud(
             gameObject = GameObject(
-                drawable = BitmapDrawable(cloudConfig.drawableRes),
+                drawable = BitmapDrawable(cloudConfig.filepath),
                 rect = Rect(
                     x = x,
                     y = y,
@@ -161,7 +161,7 @@ private fun getInitializedPlayer(config: GameConfig, resourceProvider: ResourceP
     return Player(
         gameObject = GameObject(
             drawable = AnimatedBitmapDrawable(
-                drawableResList = config.playerConfig.animationDrawableResList,
+                imageFilepath = config.playerConfig.animationFilepathList,
                 frameSkipBeforeNewBitmap = config.playerConfig.animationFrameSkipCount
             ),
             rect = Rect(
@@ -181,7 +181,7 @@ private fun getInitializedEnemy(config: GameConfig, resourceProvider: ResourcePr
     return Enemy(
         gameObject = GameObject(
             drawable = AnimatedBitmapDrawable(
-                drawableResList = config.enemyConfig.animationDrawableResList,
+                imageFilepath = config.enemyConfig.animationFilepathList,
                 frameSkipBeforeNewBitmap = config.enemyConfig.animationFrameSkipCount
             ),
             rect = Rect(
@@ -201,7 +201,7 @@ private fun getInitializedBonus(config: GameConfig, resourceProvider: ResourcePr
     return Bonus(
         gameObject = GameObject(
             drawable = BitmapDrawable(
-                bitmapDrawableRes = config.bonusConfig.drawableResList.first()
+                filepath = config.bonusConfig.filepathList.first()
             ),
             rect = Rect(
                 x = config.canvasConfig.width.toFloat(),

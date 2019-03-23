@@ -2,14 +2,13 @@ package com.github.ivanshafran.emotiongame.game.game_object
 
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
-import android.support.annotation.DrawableRes
 
 /** Abstract drawable on canvas */
 sealed class CanvasDrawable
 
 /** Should be drawn as bitmap */
 data class BitmapDrawable(
-    @DrawableRes val bitmapDrawableRes: Int
+    val filepath: String
 ) : CanvasDrawable()
 
 /** Should be drawn as color */
@@ -19,12 +18,12 @@ data class ColorDrawable(
 
 /** Should be drawn as frame animation */
 data class AnimatedBitmapDrawable(
-    private val drawableResList: List<Int>,
+    private val imageFilepath: List<String>,
     private val frameSkipBeforeNewBitmap: Int
 ) : CanvasDrawable() {
 
     init {
-        if (drawableResList.isEmpty()) {
+        if (imageFilepath.isEmpty()) {
             throw IllegalArgumentException("CanvasDrawable res list size is zero")
         }
     }
@@ -32,14 +31,13 @@ data class AnimatedBitmapDrawable(
     private var index: Int = 0
     private var frameSkipCounter: Int = 0
 
-    @DrawableRes
-    fun getNextDrawableRes(): Int {
-        val res = drawableResList[index]
+    fun getNextImageFilepath(): String {
+        val res = imageFilepath[index]
 
         frameSkipCounter += 1
         if (frameSkipCounter == frameSkipBeforeNewBitmap) {
             frameSkipCounter = 0
-            index = (index + 1) % drawableResList.size
+            index = (index + 1) % imageFilepath.size
         }
 
         return res

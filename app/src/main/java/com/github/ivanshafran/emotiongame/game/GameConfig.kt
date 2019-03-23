@@ -17,7 +17,7 @@ data class SkyConfig(
 )
 
 data class CloudConfig(
-    val drawableRes: Int,
+    val filepath: String,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
     val speedDimenRes: Int,
@@ -42,7 +42,7 @@ data class PlayerConfig(
     @DimenRes val speedDimenRes: Int, // per second
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
-    val animationDrawableResList: List<Int>,
+    val animationFilepathList: List<String>,
     val animationFrameSkipCount: Int,
     val startMarginWidthFraction: Float
 )
@@ -51,7 +51,7 @@ data class EnemyConfig(
     @DimenRes val speedDimenRes: Int,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
-    val animationDrawableResList: List<Int>,
+    val animationFilepathList: List<String>,
     val animationFrameSkipCount: Int,
     val widthFractionStartOffset: Float,
     val widthIntersectOffsetFraction: Float
@@ -84,7 +84,7 @@ data class BonusConfig(
     @DimenRes val speedDimenRes: Int,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
-    val drawableResList: List<Int>,
+    val filepathList: List<String>,
     val widthFractionStartOffset: Float,
     val widthIntersectOffsetFraction: Float
 )

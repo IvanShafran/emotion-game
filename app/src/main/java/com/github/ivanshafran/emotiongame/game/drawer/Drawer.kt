@@ -6,14 +6,13 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
-import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import com.github.ivanshafran.emotiongame.game.GameState
 import com.github.ivanshafran.emotiongame.game.game_object.*
 
 class Drawer(private val context: Context) {
 
-    private val bitmapCache: MutableMap<Int, Bitmap> = mutableMapOf()
+    private val bitmapCache: MutableMap<String, Bitmap> = mutableMapOf()
     private val colorPaintCache: MutableMap<Int, Paint> = mutableMapOf()
 
     private data class TextPaintKey(val color: Int, val size: Int)
@@ -79,7 +78,7 @@ class Drawer(private val context: Context) {
 
     private fun drawAnimatedBitmapDrawable(canvas: Canvas, drawable: AnimatedBitmapDrawable, gameObject: GameObject) {
         canvas.drawBitmap(
-            getBitmap(drawable.getNextDrawableRes(), gameObject.rect.width, gameObject.rect.height),
+            getBitmap(drawable.getNextImageFilepath(), gameObject.rect.width, gameObject.rect.height),
             gameObject.rect.x,
             gameObject.rect.y,
             null
@@ -88,18 +87,18 @@ class Drawer(private val context: Context) {
 
     private fun drawBitmapDrawable(canvas: Canvas, drawable: BitmapDrawable, gameObject: GameObject) {
         canvas.drawBitmap(
-            getBitmap(drawable.bitmapDrawableRes, gameObject.rect.width, gameObject.rect.height),
+            getBitmap(drawable.filepath, gameObject.rect.width, gameObject.rect.height),
             gameObject.rect.x,
             gameObject.rect.y,
             null
         )
     }
 
-    private fun getBitmap(@DrawableRes res: Int, width: Int, height: Int): Bitmap {
-        return bitmapCache.getOrPut(res) {
+    private fun getBitmap(filepath: String, width: Int, height: Int): Bitmap {
+        return bitmapCache.getOrPut(filepath) {
             BitmapLoader.load(
                 context,
-                res,
+                filepath,
                 width,
                 height
             )
