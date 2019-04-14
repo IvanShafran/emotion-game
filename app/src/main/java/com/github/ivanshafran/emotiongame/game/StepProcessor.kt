@@ -1,9 +1,6 @@
 package com.github.ivanshafran.emotiongame.game
 
-import com.github.ivanshafran.emotiongame.game.game_object.BitmapDrawable
-import com.github.ivanshafran.emotiongame.game.game_object.ColorDrawable
-import com.github.ivanshafran.emotiongame.game.game_object.Rect
-import com.github.ivanshafran.emotiongame.game.game_object.TextDrawable
+import com.github.ivanshafran.emotiongame.game.game_object.*
 import com.github.ivanshafran.emotiongame.resource.ResourceProvider
 import kotlin.random.Random
 
@@ -135,6 +132,12 @@ class StepProcessor(
             } else {
                 rect.y = getYPositionForSecondLine(config, rect.height)
             }
+
+            val imageListIndex = Random.nextInt(config.enemyConfig.animationFilepathLists.size)
+            gameState.enemy.gameObject.drawable = AnimatedBitmapDrawable(
+                imageFilepath = config.enemyConfig.animationFilepathLists[imageListIndex],
+                frameSkipBeforeNewBitmap = config.enemyConfig.animationFrameSkipCount
+            )
         }
     }
 

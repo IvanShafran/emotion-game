@@ -51,7 +51,7 @@ data class EnemyConfig(
     @DimenRes val speedDimenRes: Int,
     val heightFraction: Float,
     val widthToHeightAspectRatio: Float,
-    val animationFilepathList: List<String>,
+    val animationFilepathLists: List<List<String>>,
     val animationFrameSkipCount: Int,
     val widthFractionStartOffset: Float,
     val widthIntersectStartOffsetFraction: Float,

@@ -2,6 +2,7 @@ package com.github.ivanshafran.emotiongame.game
 
 import com.github.ivanshafran.emotiongame.game.game_object.*
 import com.github.ivanshafran.emotiongame.resource.ResourceProvider
+import kotlin.random.Random
 
 private const val MILLIS_IN_SECOND = 1000f
 
@@ -178,10 +179,11 @@ private fun getInitializedPlayer(config: GameConfig, resourceProvider: ResourceP
 private fun getInitializedEnemy(config: GameConfig, resourceProvider: ResourceProvider): Enemy {
     val height = (config.canvasConfig.height * config.enemyConfig.heightFraction).toInt()
     val width = (height * config.enemyConfig.widthToHeightAspectRatio).toInt()
+    val imageListIndex = Random.nextInt(config.enemyConfig.animationFilepathLists.size)
     return Enemy(
         gameObject = GameObject(
             drawable = AnimatedBitmapDrawable(
-                imageFilepath = config.enemyConfig.animationFilepathList,
+                imageFilepath = config.enemyConfig.animationFilepathLists[imageListIndex],
                 frameSkipBeforeNewBitmap = config.enemyConfig.animationFrameSkipCount
             ),
             rect = Rect(

@@ -72,17 +72,31 @@ val defaultEnemyConfig = EnemyConfig(
     speedDimenRes = R.dimen.enemy_speed,
     heightFraction = FULL_ROAD_FRACTION * 0.3f,
     widthToHeightAspectRatio = 1f,
-    animationFilepathList = listOf(
-        "zombie_girl/zombie_girl_0.png",
-        "zombie_girl/zombie_girl_1.png",
-        "zombie_girl/zombie_girl_2.png",
-        "zombie_girl/zombie_girl_3.png",
-        "zombie_girl/zombie_girl_4.png",
-        "zombie_girl/zombie_girl_5.png",
-        "zombie_girl/zombie_girl_6.png",
-        "zombie_girl/zombie_girl_7.png",
-        "zombie_girl/zombie_girl_8.png",
-        "zombie_girl/zombie_girl_9.png"
+    animationFilepathLists = listOf(
+        listOf(
+            "zombie_girl/zombie_girl_0.png",
+            "zombie_girl/zombie_girl_1.png",
+            "zombie_girl/zombie_girl_2.png",
+            "zombie_girl/zombie_girl_3.png",
+            "zombie_girl/zombie_girl_4.png",
+            "zombie_girl/zombie_girl_5.png",
+            "zombie_girl/zombie_girl_6.png",
+            "zombie_girl/zombie_girl_7.png",
+            "zombie_girl/zombie_girl_8.png",
+            "zombie_girl/zombie_girl_9.png"
+        ),
+        listOf(
+            "zombie_boy/zombie_boy_0.png",
+            "zombie_boy/zombie_boy_1.png",
+            "zombie_boy/zombie_boy_2.png",
+            "zombie_boy/zombie_boy_3.png",
+            "zombie_boy/zombie_boy_4.png",
+            "zombie_boy/zombie_boy_5.png",
+            "zombie_boy/zombie_boy_6.png",
+            "zombie_boy/zombie_boy_7.png",
+            "zombie_boy/zombie_boy_8.png",
+            "zombie_boy/zombie_boy_9.png"
+        )
     ),
     animationFrameSkipCount = 7,
     widthFractionStartOffset = 2f,
