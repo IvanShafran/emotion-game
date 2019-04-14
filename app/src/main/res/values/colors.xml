@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="game_sky_day">#B0EAFE</color>
+    <color name="game_sky_day">#DEF5FF</color>
     <color name="game_sky_night">#00006F</color>
     <color name="game_road_grass">#8FDC00</color>
     <color name="game_road_border">#FFFFFF</color>
@@ -15,4 +15,6 @@
 
     <color name="smile_text_color">#FFF</color>
     <color name="cake_color">#FFF</color>
+
+    <color name="button_and_text_colors">#5932B4</color>
 </resources>

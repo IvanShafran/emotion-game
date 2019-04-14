@@ -106,7 +106,7 @@ val defaultEnemyConfig = EnemyConfig(
 
 val defaultScoreConfig = ScoreConfig(
     textSize = R.dimen.score_text_size,
-    textColor = R.color.score_text_color,
+    textColor = R.color.button_and_text_colors,
     stringRes = R.string.score,
     heightFraction = SKY_FRACTION * 0.3f,
     widthToHeightAspectRatio = 10f,
