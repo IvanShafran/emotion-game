@@ -110,11 +110,15 @@ class StepProcessor(
         rect.x -= step
 
         var shouldRestart = isRectToLeftOfScreen(rect)
-        val intersectOffset = gameState.enemy.gameObject.rect.width * config.enemyConfig.widthIntersectOffsetFraction
+        val intersectStartOffset = gameState.enemy.gameObject.rect.width *
+                config.enemyConfig.widthIntersectStartOffsetFraction
+        val intersectEndOffset = gameState.enemy.gameObject.rect.width *
+                config.enemyConfig.widthIntersectEndOffsetFraction
+
         val intersectRect = Rect(
-            x = rect.x + intersectOffset,
+            x = rect.x + intersectStartOffset,
             y = rect.y,
-            width = rect.width,
+            width = rect.width - intersectStartOffset.toInt() - intersectEndOffset.toInt(),
             height = rect.height
         )
 

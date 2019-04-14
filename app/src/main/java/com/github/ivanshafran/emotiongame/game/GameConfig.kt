@@ -54,7 +54,8 @@ data class EnemyConfig(
     val animationFilepathList: List<String>,
     val animationFrameSkipCount: Int,
     val widthFractionStartOffset: Float,
-    val widthIntersectOffsetFraction: Float
+    val widthIntersectStartOffsetFraction: Float,
+    val widthIntersectEndOffsetFraction: Float
 )
 
 data class ScoreConfig(

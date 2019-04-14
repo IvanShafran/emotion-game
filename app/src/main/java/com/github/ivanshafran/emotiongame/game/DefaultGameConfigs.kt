@@ -86,7 +86,8 @@ val defaultEnemyConfig = EnemyConfig(
     ),
     animationFrameSkipCount = 7,
     widthFractionStartOffset = 2f,
-    widthIntersectOffsetFraction = 0.45f
+    widthIntersectStartOffsetFraction = 0.45f,
+    widthIntersectEndOffsetFraction = 0.45f
 )
 
 val defaultScoreConfig = ScoreConfig(
@@ -128,7 +129,7 @@ val defaultBonusConfig = BonusConfig(
     textColor = R.color.cake_color,
     textSize = R.dimen.cake_text_size,
     widthFractionStartOffset = 1f,
-    widthIntersectOffsetFraction = 0.3f
+    widthIntersectOffsetFraction = 0.5f
 )
 
 val defaultSpeedMultiplierConfig = SpeedMultiplierConfig(
