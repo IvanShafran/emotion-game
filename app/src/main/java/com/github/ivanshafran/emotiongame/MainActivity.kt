@@ -101,6 +101,9 @@ class MainActivity :
 
     override fun onPause() {
         super.onPause()
+        if (!isGamePaused) {
+            onPauseClick()
+        }
         stopCamera()
     }
 
