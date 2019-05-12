@@ -18,7 +18,7 @@
 
     <dimen name="button_label_margin_top">0dp</dimen>
     <dimen name="button_border_margin">16dp</dimen>
-    <dimen name="button_up_size">48dp</dimen>
+    <dimen name="button_secondary_size">48dp</dimen>
 
     <dimen name="score_margin_top">0dp</dimen>
     <dimen name="score_margin_start">8dp</dimen>

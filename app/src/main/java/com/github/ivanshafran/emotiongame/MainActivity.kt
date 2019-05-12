@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback
+import android.support.v4.app.ShareCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -44,7 +45,14 @@ class MainActivity :
     private lateinit var needPermissionViews: List<View>
     private var isPermissionRequestedAutomatically: Boolean = false
 
-    private var isGamePaused: Boolean = false
+    private enum class GameStatus {
+        IDLE,
+        RUNNING,
+        PAUSED
+    }
+
+    private var gameStatus: GameStatus = GameStatus.IDLE
+    private var lastScore = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +73,7 @@ class MainActivity :
         restartButton.setOnClickListener(this)
         pauseButton.setOnClickListener(this)
         infoButton.setOnClickListener(this)
+        shareButton.setOnClickListener(this)
 
         findViewById<View>(R.id.needPermissionButton).setOnClickListener(this)
     }
@@ -101,7 +110,7 @@ class MainActivity :
 
     override fun onPause() {
         super.onPause()
-        if (!isGamePaused) {
+        if (gameStatus == GameStatus.RUNNING) {
             onPauseClick()
         }
         stopCamera()
@@ -209,6 +218,7 @@ class MainActivity :
             R.id.pauseButton -> onPauseClick()
             R.id.restartButton -> onRestartClick()
             R.id.infoButton -> onInfoClick()
+            R.id.shareButton -> onShareClick()
             else -> {
                 // Do nothing
             }
@@ -221,18 +231,21 @@ class MainActivity :
 
     private fun onPlayButtonClick() {
         hideMainMenu()
-        if (isGamePaused) {
-            gameSurfaceView.resumeGame()
-            isGamePaused = false
-        } else {
-            gameSurfaceView.startNewGame()
+        when (gameStatus) {
+            GameStatus.PAUSED -> gameSurfaceView.resumeGame()
+            GameStatus.IDLE -> gameSurfaceView.startNewGame()
+            else -> {
+                throw IllegalStateException("Play button clicked in RUNNING state")
+            }
         }
+
+        gameStatus = GameStatus.RUNNING
         showGame()
     }
 
     private fun onPauseClick() {
         gameSurfaceView.pauseGame()
-        isGamePaused = true
+        gameStatus = GameStatus.PAUSED
         hideGame()
         showMainMenu()
     }
@@ -245,15 +258,30 @@ class MainActivity :
 
     override fun onGameEnd(score: Int) {
         hideGame()
-        isGamePaused = false
+        gameStatus = GameStatus.IDLE
         showMainMenu()
 
         scoreTextView.visibility = View.VISIBLE
         scoreTextView.text = getString(R.string.score_menu, score)
+        lastScore = score
     }
 
     private fun onInfoClick() {
         startActivity(Intent(this, InfoActivity::class.java))
+    }
+
+    private fun onShareClick() {
+        ShareCompat.IntentBuilder
+            .from(this)
+            .setText(
+                if (lastScore == 0) {
+                    getString(R.string.share_game_text)
+                } else {
+                    getString(R.string.share_result_text, lastScore)
+                }
+            )
+            .setType("text/plain")
+            .startChooser()
     }
 
     private fun showPermissionViews() {
@@ -269,10 +297,12 @@ class MainActivity :
         playLabelTextView.visibility = View.VISIBLE
         infoButton.visibility = View.VISIBLE
         infoLabelTextView.visibility = View.VISIBLE
-        if (isGamePaused) {
+        if (gameStatus == GameStatus.PAUSED) {
             restartButton.visibility = View.VISIBLE
             restartLabelTextView.visibility = View.VISIBLE
         }
+        shareButton.visibility = View.VISIBLE
+        shareLabelTextView.visibility = View.VISIBLE
     }
 
     private fun hideMainMenu() {
@@ -283,6 +313,8 @@ class MainActivity :
         restartButton.visibility = View.GONE
         restartLabelTextView.visibility = View.GONE
         scoreTextView.visibility = View.GONE
+        shareButton.visibility = View.GONE
+        shareLabelTextView.visibility = View.GONE
     }
 
     private fun showGame() {

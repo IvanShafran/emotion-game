@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">EmotionGame</string>
+    <string name="app_name">Emotion Run</string>
     <string name="score">🍰 %1$s</string>
     <string name="score_menu">🍰 %1$d 👏</string>
     <string name="life">Life: %1$s</string>
 
-    <string name="need_camera_permission_rationale">Game uses camera\nto capture your emotions.\nAllow application\nto use camera.</string>
+    <string name="need_camera_permission_rationale">Game uses camera\nto capture your emotions.\nAllow application\nto
+        use camera.
+    </string>
     <string name="need_camera_permission_button">Allow</string>
     <string name="rules_smile">😄=👆</string>
     <string name="rules_not_smile">😐=👇</string>
@@ -27,6 +29,17 @@
 
     <string name="info_assets_text">
         Play, info, pause, restart icons are under Apache License Version 2.0.
+    </string>
+
+    <string name="menu_share">Share with friends</string>
+    <string name="share_result_text">
+        My score in the "Emotion Run" is %1$d.\n
+        Game in which you control unit by smile and eyes.\n
+        Try it:
+    </string>
+    <string name="share_game_text">
+        Game in which you control unit by smile and eyes.
+        Try it:
     </string>
 
 </resources>

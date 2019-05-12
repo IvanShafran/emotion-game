@@ -121,8 +121,8 @@
 
     <ImageView
         android:id="@+id/pauseButton"
-        android:layout_width="@dimen/button_up_size"
-        android:layout_height="@dimen/button_up_size"
+        android:layout_width="@dimen/button_secondary_size"
+        android:layout_height="@dimen/button_secondary_size"
         android:layout_margin="@dimen/button_border_margin"
         android:src="@drawable/ic_pause"
         android:visibility="gone"
@@ -189,8 +189,8 @@
 
     <ImageView
         android:id="@+id/infoButton"
-        android:layout_width="@dimen/button_up_size"
-        android:layout_height="@dimen/button_up_size"
+        android:layout_width="@dimen/button_secondary_size"
+        android:layout_height="@dimen/button_secondary_size"
         android:layout_margin="@dimen/button_border_margin"
         android:src="@drawable/ic_info"
         android:visibility="gone"
@@ -239,8 +239,8 @@
 
     <ImageView
         android:id="@+id/restartButton"
-        android:layout_width="@dimen/button_up_size"
-        android:layout_height="@dimen/button_up_size"
+        android:layout_width="@dimen/button_secondary_size"
+        android:layout_height="@dimen/button_secondary_size"
         android:layout_margin="@dimen/button_border_margin"
         android:src="@drawable/ic_restart"
         android:visibility="gone"
@@ -274,5 +274,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/infoButton" />
+
+    <!-- Share -->
+
+    <ImageView
+        android:id="@+id/shareButton"
+        android:layout_width="@dimen/button_secondary_size"
+        android:layout_height="@dimen/button_secondary_size"
+        android:layout_marginStart="@dimen/button_border_margin"
+        android:src="@drawable/ic_share"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/shareLabelTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/shareLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/button_border_margin"
+        android:layout_marginTop="@dimen/button_label_margin_top"
+        android:text="@string/menu_share"
+        android:textColor="@color/button_and_text_colors"
+        android:textSize="@dimen/menu_text_size"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 
 </android.support.constraint.ConstraintLayout>
