@@ -74,6 +74,18 @@ class MainActivity :
         pauseButton.setOnClickListener(this)
         infoButton.setOnClickListener(this)
         shareButton.setOnClickListener(this)
+        contentLayout.setOnClickListener(object : View.OnClickListener {
+            // Trick to fix navigation UI hiding after appearing
+            // cause it leads to contentLayout click
+            private var tapCount: Int = 0
+
+            override fun onClick(v: View?) {
+                ++tapCount
+                if (tapCount % 2 == 0) {
+                    hideSystemUI()
+                }
+            }
+        })
 
         findViewById<View>(R.id.needPermissionButton).setOnClickListener(this)
     }
