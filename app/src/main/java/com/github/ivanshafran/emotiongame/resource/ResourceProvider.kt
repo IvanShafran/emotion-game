@@ -1,8 +1,8 @@
 package com.github.ivanshafran.emotiongame.resource
 
 import android.content.Context
-import androidx.annotation.DimenRes
-import androidx.annotation.StringRes
+import android.support.annotation.DimenRes
+import android.support.annotation.StringRes
 
 class ResourceProvider(private val context: Context) {
 
