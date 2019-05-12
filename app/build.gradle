@@ -26,6 +26,10 @@ android {
     }
     aaptOptions {
         noCompress "tflite"
+        ignoreAssetsPattern "!fssd_100_8bit_gray_v1.tflite" +
+                ":!fssd_100_8bit_v1.tflite" +
+                ":!contours.tfl" +
+                ":!blazeface.tfl"
     }
     packagingOptions {
         exclude 'META-INF/androidx.exifinterface_exifinterface.version'
