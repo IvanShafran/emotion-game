@@ -28,7 +28,19 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MainActivityTheme">
+            android:theme="@style/MainActivityTheme" />
+
+        <activity
+            android:name=".InfoActivity"
+            android:label="@string/info_label" />
+
+        <activity
+            android:name=".AcceptActivity"
+            android:theme="@style/AcceptActivityTheme" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -36,10 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".InfoActivity"
-            android:label="@string/info_label" />
     </application>
 
 </manifest>

@@ -42,4 +42,12 @@
         Try it:
     </string>
 
+    <string name="accept_main_text">Please read the <a href="">Terms of Use</a>
+        and the <a href="https://app.termly.io/document/privacy-notice/764c723e-f3a3-4345-80d5-5f118efdb190">Privacy Policy</a>
+        carefully before using the app.\n\nIn short, the app uses a camera for the game mechanic
+        but doesn\'t send any data to any services.\nAlso, it doesn\'t have any ads.\nEnjoy! 😉
+    </string>
+    <string name="accept_checkbox_text">I have read and agree to the Terms of Use and the Privacy Policy</string>
+    <string name="accept_button_text">AGREE &amp; CONTINUE</string>
+
 </resources>

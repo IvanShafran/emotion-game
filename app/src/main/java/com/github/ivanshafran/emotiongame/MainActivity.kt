@@ -1,6 +1,7 @@
 package com.github.ivanshafran.emotiongame
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -35,6 +36,9 @@ class MainActivity :
         private const val CAMERA_PERMISSION_REQUEST_CODE = 1
         private const val SMILE_THRESHOLD = 0.7f
         private const val EYE_BLINK_THRESHOLD = 0.2f
+
+        fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
+
     }
 
     private var cameraSource: CameraSource? = null
