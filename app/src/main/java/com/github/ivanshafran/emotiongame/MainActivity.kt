@@ -35,10 +35,9 @@ class MainActivity :
         private const val TAG = "MainActivity"
         private const val CAMERA_PERMISSION_REQUEST_CODE = 1
         private const val SMILE_THRESHOLD = 0.7f
-        private const val EYE_BLINK_THRESHOLD = 0.2f
+        private const val EYE_BLINK_THRESHOLD = 0.1f
 
         fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
-
     }
 
     private var cameraSource: CameraSource? = null
@@ -196,7 +195,7 @@ class MainActivity :
     override fun onFaceFeatures(features: FaceFeatures) {
         val emotions = Emotions(
             isSmile = features.smileProbability > SMILE_THRESHOLD,
-            isBlink = features.leftEyeOpenProbability < EYE_BLINK_THRESHOLD ||
+            isBlink = features.leftEyeOpenProbability < EYE_BLINK_THRESHOLD &&
                 features.rightEyeOpenProbability < EYE_BLINK_THRESHOLD
         )
         gameSurfaceView.setEmotions(emotions)
