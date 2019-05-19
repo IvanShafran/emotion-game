@@ -10,7 +10,7 @@
     <string name="need_camera_permission_button">Allow</string>
     <string name="rules_smile">😄=👆</string>
     <string name="rules_not_smile">😐=👇</string>
-    <string name="rules_blink">🙈=2🍰</string>
+    <string name="rules_blink">🙈=x2🍰</string>
 
     <string name="smile_reaction">😄</string>
     <string name="not_smile_reaction">😐</string>
