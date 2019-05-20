@@ -35,11 +35,11 @@
     <string name="share_result_text">
         My score in the "Emotion Run" is %1$d.\n
         Game in which you control unit by smile and eyes.\n
-        Try it:
+        Try it: https://play.google.com/store/apps/details?id=com.github.ivanshafran.emotiongame
     </string>
     <string name="share_game_text">
         Game in which you control unit by smile and eyes.
-        Try it:
+        Try it: https://play.google.com/store/apps/details?id=com.github.ivanshafran.emotiongame
     </string>
 
     <string name="accept_main_text">Please read the <a href="https://www.websitepolicies.com/policies/view/M9AiYYGp">Terms of Use</a>
