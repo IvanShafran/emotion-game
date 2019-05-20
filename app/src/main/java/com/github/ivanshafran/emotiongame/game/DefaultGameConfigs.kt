@@ -137,8 +137,7 @@ val defaultBonusConfig = BonusConfig(
         "\uD83C\uDF69",
         "\uD83C\uDF70",
         "\uD83C\uDF6D",
-        "\uD83C\uDF82",
-        "\uD83E\uDDC1"
+        "\uD83C\uDF82"
     ),
     textColor = R.color.cake_color,
     textSize = R.dimen.cake_text_size,
