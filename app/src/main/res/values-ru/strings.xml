@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Emotion Run</string>
+    <string name="score">🍰 %1$s</string>
+    <string name="score_menu">🍰 %1$d 👏</string>
+    <string name="life">Life: %1$s</string>
+
+    <string name="need_camera_permission_rationale">Игра использует камеру\nдля распознавания ваших эмоций.\nРазрешите\nиспользовать
+        камеру.
+    </string>
+    <string name="need_camera_permission_button">Разрешить</string>
+    <string name="rules_smile">😄=👆</string>
+    <string name="rules_not_smile">😐=👇</string>
+    <string name="rules_blink">🙈=x2🍰</string>
+
+    <string name="smile_reaction">😄</string>
+    <string name="not_smile_reaction">😐</string>
+    <string name="not_blink_reaction">👀</string>
+    <string name="blink_reaction">🙈</string>
+
+    <string name="menu_play_label">Играть</string>
+    <string name="menu_info_label">Информация</string>
+    <string name="menu_restart_label">Заново</string>
+    <string name="menu_pause_label">Пауза</string>
+
+    <string name="info_label">Информация</string>
+    <string name="open_source_library_notices">Библиотеки</string>
+
+    <string name="analytics_notices">Приложение не использует сервисы аналитики.</string>
+
+    <string name="info_assets_text">
+        Иконки главного меню под лицензией Apache License Version 2.0.
+    </string>
+
+    <string name="menu_share">Поделиться</string>
+    <string name="share_result_text">
+        Мой результат в "Emotion Run" - %1$d.\n
+        Игра, где управляешь с помощью улыбки и подмигиваний.\n
+        Try it: https://play.google.com/store/apps/details?id=com.github.ivanshafran.emotiongame
+    </string>
+    <string name="share_game_text">
+        Игра, где управляешь с помощью улыбки и подмигиваний.
+        Try it: https://play.google.com/store/apps/details?id=com.github.ivanshafran.emotiongame
+    </string>
+
+    <string name="accept_main_text">Пожалуйста, прочитайте внимательно <a href="https://www.websitepolicies.com/policies/view/M9AiYYGp">условия использования</a>
+        и <a href="https://app.termly.io/document/privacy-notice/764c723e-f3a3-4345-80d5-5f118efdb190">политику конфидециальности</a>
+        перед использованием приложения.
+    </string>
+    <string name="accept_checkbox_text">Я прочитал и согласен с условиями использования и политикой конфидециальности</string>
+    <string name="accept_button_text">Согласиться и продолжить</string>
+
+</resources>
