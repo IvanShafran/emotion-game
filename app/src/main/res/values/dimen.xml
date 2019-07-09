@@ -25,4 +25,9 @@
     <dimen name="life_margin_bottom">12dp</dimen>
     <dimen name="life_margin_start">8dp</dimen>
 
+    <dimen name="accept_text_size">16sp</dimen>
+
+    <dimen name="accept_animation_width">271dp</dimen>
+    <dimen name="accept_animation_height">237dp</dimen>
+
 </resources>
