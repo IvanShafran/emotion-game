@@ -41,14 +41,17 @@
 
         <activity
             android:name=".InfoActivity"
-            android:label="@string/info_label" />
+            android:label="@string/info_label"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".AcceptActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AcceptActivityTheme" />
 
         <activity
             android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
