@@ -17,10 +17,10 @@ import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
-import java.io.IOException;
-import java.util.List;
-
+import com.github.ivanshafran.emotiongame.camera.CameraImageGraphic;
+import com.github.ivanshafran.emotiongame.camera.FrameMetadata;
+import com.github.ivanshafran.emotiongame.camera.GraphicOverlay;
+import com.github.ivanshafran.emotiongame.camera.VisionProcessorBase;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
@@ -28,10 +28,8 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 
-import com.github.ivanshafran.emotiongame.camera.CameraImageGraphic;
-import com.github.ivanshafran.emotiongame.camera.FrameMetadata;
-import com.github.ivanshafran.emotiongame.camera.GraphicOverlay;
-import com.github.ivanshafran.emotiongame.camera.VisionProcessorBase;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Face Detector Demo.
@@ -82,15 +80,15 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
         }
 
         if (faces.isEmpty()) {
-            return;
+            listener.onFaceFeatures(null);
+        } else {
+            FirebaseVisionFace face = faces.get(0);
+            listener.onFaceFeatures(new FaceFeatures(
+                    face.getSmilingProbability(),
+                    face.getLeftEyeOpenProbability(),
+                    face.getRightEyeOpenProbability()
+            ));
         }
-
-        FirebaseVisionFace face = faces.get(0);
-        listener.onFaceFeatures(new FaceFeatures(
-                face.getSmilingProbability(),
-                face.getLeftEyeOpenProbability(),
-                face.getRightEyeOpenProbability()
-        ));
     }
 
     @Override

@@ -18,7 +18,7 @@ import com.github.ivanshafran.emotiongame.camera.GraphicOverlay
 import com.github.ivanshafran.emotiongame.camera.facedetection.FaceDetectionProcessor
 import com.github.ivanshafran.emotiongame.camera.facedetection.FaceFeatures
 import com.github.ivanshafran.emotiongame.camera.facedetection.FaceFeaturesListener
-import com.github.ivanshafran.emotiongame.game.Emotions
+import com.github.ivanshafran.emotiongame.game.EmotionsDetector
 import com.github.ivanshafran.emotiongame.game.GameEndListener
 import com.github.ivanshafran.emotiongame.game.GameSurfaceView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,12 +34,11 @@ class MainActivity :
     companion object {
         private const val TAG = "MainActivity"
         private const val CAMERA_PERMISSION_REQUEST_CODE = 1
-        private const val SMILE_THRESHOLD = 0.7f
-        private const val EYE_BLINK_THRESHOLD = 0.1f
 
         fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 
+    private val emotionsDetector = EmotionsDetector()
     private var cameraSource: CameraSource? = null
     private var graphicOverlay: GraphicOverlay? = null
 
@@ -106,16 +105,16 @@ class MainActivity :
         // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         val decorView = window.decorView
         decorView.systemUiVisibility = (
-            View.SYSTEM_UI_FLAG_IMMERSIVE
-                // Set the content to appear under the system bars so that the
-                // content doesn't resize when the system bars hide and show.
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                // Hide the nav bar and status bar
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN
-            )
+                View.SYSTEM_UI_FLAG_IMMERSIVE
+                        // Set the content to appear under the system bars so that the
+                        // content doesn't resize when the system bars hide and show.
+                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        // Hide the nav bar and status bar
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_FULLSCREEN
+                )
     }
 
     public override fun onResume() {
@@ -192,12 +191,8 @@ class MainActivity :
         }
     }
 
-    override fun onFaceFeatures(features: FaceFeatures) {
-        val emotions = Emotions(
-            isSmile = features.smileProbability > SMILE_THRESHOLD,
-            isBlink = features.leftEyeOpenProbability < EYE_BLINK_THRESHOLD &&
-                features.rightEyeOpenProbability < EYE_BLINK_THRESHOLD
-        )
+    override fun onFaceFeatures(features: FaceFeatures?) {
+        val emotions = emotionsDetector.detect(features)
         gameSurfaceView.setEmotions(emotions)
 
         smileReactionTextView.text = getString(
